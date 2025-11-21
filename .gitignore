@@ -1,1 +1,13 @@
 repos/
+repos-analysis/
+
+.venv/
+.github/
+
+sim/.pytest_cache/
+
+transcript
+
+sim/work/
+sim/sim_build/
+sim/tests/__pycache__/

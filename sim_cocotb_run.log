@@ -1,0 +1,121 @@
+============================= test session starts =============================
+platform win32 -- Python 3.12.2, pytest-9.0.1, pluggy-1.6.0 -- C:\Users\waric\Documents\gpu\.venv\Scripts\python.exe
+cachedir: .pytest_cache
+rootdir: C:\Users\waric\Documents\gpu\sim
+plugins: cocotb-test-0.2.6
+collecting ... collected 2 items
+
+tests/test_runner.py::test_dma_mmu FAILED
+tests/test_runner.py::test_cfg FAILED
+
+================================== FAILURES ===================================
+________________________________ test_dma_mmu _________________________________
+
+    def test_dma_mmu():
+>       run(
+            toplevel="tb_top",
+            module="test_dma_mmu",
+            verilog_sources=_get_sources(),
+            sim="questa",
+            # keep build directory inside sim to avoid polluting repo root
+            build_dir="sim_build",
+        )
+E       SystemExit: Process vsim terminated with error 12
+
+tests\test_runner.py:34: SystemExit
+------------------------------ Captured log call ------------------------------
+INFO     cocotb:simulator.py:295 Running command: vlib tb_top
+INFO     cocotb:simulator.py:266 ** Warning: (vlib-34) Library already exists at "tb_top".
+INFO     cocotb:simulator.py:295 Running command: vlog -incr -work tb_top +define+COCOTB_SIM -sv C:\\Users\\waric\\Documents\\gpu\\rtl\\top.sv C:\\Users\\waric\\Documents\\gpu\\rtl\\dma.sv C:\\Users\\waric\\Documents\\gpu\\rtl\\mmu.sv C:\\Users\\waric\\Documents\\gpu\\sim\\tb_top.sv
+INFO     cocotb:simulator.py:266 Model Technology ModelSim - Intel FPGA Edition vlog 2020.1 Compiler 2020.02 Feb 28 2020
+INFO     cocotb:simulator.py:266 Start time: 18:13:04 on Nov 21,2025
+INFO     cocotb:simulator.py:266 vlog -incr -work tb_top "+define+COCOTB_SIM" -sv C:\\Users\\waric\\Documents\\gpu\\rtl\\top.sv C:\\Users\\waric\\Documents\\gpu\\rtl\\dma.sv C:\\Users\\waric\\Documents\\gpu\\rtl\\mmu.sv C:\\Users\\waric\\Documents\\gpu\\sim\\tb_top.sv
+INFO     cocotb:simulator.py:266 -- Skipping module top
+INFO     cocotb:simulator.py:266 -- Skipping module dma
+INFO     cocotb:simulator.py:266 -- Skipping module mmu
+INFO     cocotb:simulator.py:266 -- Skipping module tb_top
+INFO     cocotb:simulator.py:266 
+INFO     cocotb:simulator.py:266 Top level modules:
+INFO     cocotb:simulator.py:266 	tb_top
+INFO     cocotb:simulator.py:266 End time: 18:13:04 on Nov 21,2025, Elapsed time: 0:00:00
+INFO     cocotb:simulator.py:266 Errors: 0, Warnings: 0
+INFO     cocotb:simulator.py:295 Running command: vsim -c -onfinish exit -pli C:\\Users\\waric\\Documents\\gpu\\.venv\\Lib\\site-packages\\cocotb\\libs\\cocotbvpi_modelsim.dll tb_top.tb_top -do run -all; quit
+INFO     cocotb:simulator.py:266 Reading pref.tcl
+INFO     cocotb:simulator.py:266 
+INFO     cocotb:simulator.py:266 # 2020.1
+INFO     cocotb:simulator.py:266 
+INFO     cocotb:simulator.py:266 # vsim -c -onfinish exit -pli "C:\\Users\\waric\\Documents\\gpu\\.venv\\Lib\\site-packages\\cocotb\\libs\\cocotbvpi_modelsim.dll" tb_top.tb_top -do "run -all; quit"
+INFO     cocotb:simulator.py:266 # Start time: 18:13:05 on Nov 21,2025
+INFO     cocotb:simulator.py:266 # Loading sv_std.std
+INFO     cocotb:simulator.py:266 # Loading tb_top.tb_top
+INFO     cocotb:simulator.py:266 # Loading tb_top.top
+INFO     cocotb:simulator.py:266 # Loading tb_top.mmu
+INFO     cocotb:simulator.py:266 # Loading tb_top.dma
+INFO     cocotb:simulator.py:266 # Loading C:\\Users\\waric\\Documents\\gpu\\.venv\\Lib\\site-packages\\cocotb\\libs\\cocotbvpi_modelsim.dll
+INFO     cocotb:simulator.py:266 # ** Error: (vsim-3193) Load of "C:\\Users\\waric\\Documents\\gpu\\.venv\\Lib\\site-packages\\cocotb\\libs\\cocotbvpi_modelsim.dll" failed: Bad DLL format.
+INFO     cocotb:simulator.py:266 # ** Error (suppressible): (vsim-PLI-3002) Failed to load PLI object file "C:\\Users\\waric\\Documents\\gpu\\.venv\\Lib\\site-packages\\cocotb\\libs\\cocotbvpi_modelsim.dll".
+INFO     cocotb:simulator.py:266 #    Time: 0 ps  Iteration: 0  Root: /
+INFO     cocotb:simulator.py:266 # Error loading design
+ERROR    cocotb:simulator.py:266 Error loading design
+INFO     cocotb:simulator.py:266 # End time: 18:13:06 on Nov 21,2025, Elapsed time: 0:00:01
+INFO     cocotb:simulator.py:266 # Errors: 2, Warnings: 0
+__________________________________ test_cfg ___________________________________
+
+    def test_cfg():
+>       run(
+            toplevel="tb_top",
+            module="test_cfg",
+            verilog_sources=_get_sources(),
+            sim="questa",
+            build_dir="sim_build",
+        )
+E       SystemExit: Process vsim terminated with error 12
+
+tests\test_runner.py:45: SystemExit
+------------------------------ Captured log call ------------------------------
+INFO     cocotb:simulator.py:295 Running command: vlib tb_top
+INFO     cocotb:simulator.py:266 ** Warning: (vlib-34) Library already exists at "tb_top".
+INFO     cocotb:simulator.py:295 Running command: vlog -incr -work tb_top +define+COCOTB_SIM -sv C:\\Users\\waric\\Documents\\gpu\\rtl\\top.sv C:\\Users\\waric\\Documents\\gpu\\rtl\\dma.sv C:\\Users\\waric\\Documents\\gpu\\rtl\\mmu.sv C:\\Users\\waric\\Documents\\gpu\\sim\\tb_top.sv
+INFO     cocotb:simulator.py:266 Model Technology ModelSim - Intel FPGA Edition vlog 2020.1 Compiler 2020.02 Feb 28 2020
+INFO     cocotb:simulator.py:266 Start time: 18:13:06 on Nov 21,2025
+INFO     cocotb:simulator.py:266 vlog -incr -work tb_top "+define+COCOTB_SIM" -sv C:\\Users\\waric\\Documents\\gpu\\rtl\\top.sv C:\\Users\\waric\\Documents\\gpu\\rtl\\dma.sv C:\\Users\\waric\\Documents\\gpu\\rtl\\mmu.sv C:\\Users\\waric\\Documents\\gpu\\sim\\tb_top.sv
+INFO     cocotb:simulator.py:266 -- Skipping module top
+INFO     cocotb:simulator.py:266 -- Skipping module dma
+INFO     cocotb:simulator.py:266 -- Skipping module mmu
+INFO     cocotb:simulator.py:266 -- Skipping module tb_top
+INFO     cocotb:simulator.py:266 
+INFO     cocotb:simulator.py:266 Top level modules:
+INFO     cocotb:simulator.py:266 	tb_top
+INFO     cocotb:simulator.py:266 End time: 18:13:06 on Nov 21,2025, Elapsed time: 0:00:00
+INFO     cocotb:simulator.py:266 Errors: 0, Warnings: 0
+INFO     cocotb:simulator.py:295 Running command: vsim -c -onfinish exit -pli C:\\Users\\waric\\Documents\\gpu\\.venv\\Lib\\site-packages\\cocotb\\libs\\cocotbvpi_modelsim.dll tb_top.tb_top -do run -all; quit
+INFO     cocotb:simulator.py:266 Reading pref.tcl
+INFO     cocotb:simulator.py:266 
+INFO     cocotb:simulator.py:266 # 2020.1
+INFO     cocotb:simulator.py:266 
+INFO     cocotb:simulator.py:266 # vsim -c -onfinish exit -pli "C:\\Users\\waric\\Documents\\gpu\\.venv\\Lib\\site-packages\\cocotb\\libs\\cocotbvpi_modelsim.dll" tb_top.tb_top -do "run -all; quit"
+INFO     cocotb:simulator.py:266 # Start time: 18:13:07 on Nov 21,2025
+INFO     cocotb:simulator.py:266 # Loading sv_std.std
+INFO     cocotb:simulator.py:266 # Loading tb_top.tb_top
+INFO     cocotb:simulator.py:266 # Loading tb_top.top
+INFO     cocotb:simulator.py:266 # Loading tb_top.mmu
+INFO     cocotb:simulator.py:266 # Loading tb_top.dma
+INFO     cocotb:simulator.py:266 # Loading C:\\Users\\waric\\Documents\\gpu\\.venv\\Lib\\site-packages\\cocotb\\libs\\cocotbvpi_modelsim.dll
+INFO     cocotb:simulator.py:266 # ** Error: (vsim-3193) Load of "C:\\Users\\waric\\Documents\\gpu\\.venv\\Lib\\site-packages\\cocotb\\libs\\cocotbvpi_modelsim.dll" failed: Bad DLL format.
+INFO     cocotb:simulator.py:266 # ** Error (suppressible): (vsim-PLI-3002) Failed to load PLI object file "C:\\Users\\waric\\Documents\\gpu\\.venv\\Lib\\site-packages\\cocotb\\libs\\cocotbvpi_modelsim.dll".
+INFO     cocotb:simulator.py:266 #    Time: 0 ps  Iteration: 0  Root: /
+INFO     cocotb:simulator.py:266 # Error loading design
+ERROR    cocotb:simulator.py:266 Error loading design
+INFO     cocotb:simulator.py:266 # End time: 18:13:08 on Nov 21,2025, Elapsed time: 0:00:01
+INFO     cocotb:simulator.py:266 # Errors: 2, Warnings: 0
+============================== warnings summary ===============================
+tests/test_runner.py::test_dma_mmu
+tests/test_runner.py::test_cfg
+  C:\Users\waric\Documents\gpu\.venv\Lib\site-packages\cocotb_test\simulator.py:1211: DeprecationWarning: Using kwargs is deprecated. Please explicitly declare or arguments instead.
+    sim = Questa(**kwargs)
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+=========================== short test summary info ===========================
+FAILED tests/test_runner.py::test_dma_mmu - SystemExit: Process vsim terminated with error 12
+FAILED tests/test_runner.py::test_cfg - SystemExit: Process vsim terminated with error 12
+======================== 2 failed, 2 warnings in 4.79s ========================
