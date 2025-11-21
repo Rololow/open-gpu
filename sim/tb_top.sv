@@ -147,23 +147,69 @@ module tb_top();
         pass_count = 0;
         fail_count = 0;
 
-        // Focused debug: single basic 16-word transfer
-        num_words = 16;
-        src_idx = 32'h0000_1000 >> 2;
-        dst_idx = 32'h0000_2000 >> 2;
-        // initialize source/dest and print first words for debug
-        for (i = 0; i < num_words; i++) begin
-            dut.u_mem.mem[src_idx + i] = 32'h5A5A_0000 + i;
-            dut.u_mem.mem[dst_idx + i] = 32'h0;
-        end
-        $display("PRE-START MEM SRC[0]=0x%08h SRC[1]=0x%08h DST[0]=0x%08h", dut.u_mem.mem[src_idx], dut.u_mem.mem[src_idx+1], dut.u_mem.mem[dst_idx]);
-
-        run_case(32'h0000_1000, 32'h0000_2000, num_words, passed);
+        // Deterministic cases
+        run_case(32'h0000_1000, 32'h0000_2000, 16, passed); // basic
+        if (passed) pass_count++; else fail_count++;
+        run_case(32'h0000_1000, 32'h0000_2000, 0, passed);  // zero-length
+        if (passed) pass_count++; else fail_count++;
+        run_case(32'h0000_1004, 32'h0000_2008, 1, passed);  // small
+        if (passed) pass_count++; else fail_count++;
+        run_case(32'h0000_1103, 32'h0000_2107, 8, passed);  // misaligned addresses (low bits non-zero)
         if (passed) pass_count++; else fail_count++;
 
-        // print result words
-        for (j = 0; j < num_words; j++) begin
-            $display("POST: dst[%0d]=0x%08h", j, dut.u_mem.mem[dst_idx + j]);
+        // concurrent transfer test: attempt to start while busy
+        // prepare a longer transfer and attempt start again immediately
+        num_words = 32;
+        // init
+        src_idx = 32'h0000_3000 >> 2;
+        dst_idx = 32'h0000_4000 >> 2;
+        for (i = 0; i < num_words; i++) begin
+            dut.u_mem.mem[src_idx + i] = 32'hC3C3_0000 + i;
+            dut.u_mem.mem[dst_idx + i] = 32'h0;
+        end
+        write_reg(32'h0000_0010, 32'h0000_3000);
+        write_reg(32'h0000_0018, 32'h0000_4000);
+        write_reg(32'h0000_0020, num_words);
+        write_reg(32'h0000_0024, 32'h1); // start
+        // immediately try to start again (should be ignored)
+        write_reg(32'h0000_0024, 32'h1);
+        // poll and verify
+        timeout = num_words * 8 + 200;
+        concurrent_loop: for (i = 0; i < timeout; i++) begin
+            read_reg(32'h0000_002C, r);
+            if (r[0]) begin
+                // verify
+                all_ok = 1;
+                for (j = 0; j < num_words; j++) begin
+                    expected = 32'hC3C3_0000 + j;
+                    got = dut.u_mem.mem[dst_idx + j];
+                    if (got !== expected) begin
+                        $display("CONCURRENT CASE FAIL: mismatch at %0d: got 0x%08h expected 0x%08h", j, got, expected);
+                        all_ok = 0;
+                        break;
+                    end
+                end
+                if (all_ok) begin
+                    $display("CONCURRENT CASE PASS: %0d words", num_words);
+                    pass_count++;
+                end else begin
+                    fail_count++;
+                end
+                disable concurrent_loop;
+            end
+            @(posedge clk);
+        end
+
+        // Randomized tests
+        rnd_tests = 10;
+        max_words = 64;
+        for (i = 0; i < rnd_tests; i++) begin
+            // pick random base indices within a safe range
+            base_src = (1 + ($urandom_range(0, 1000))); // word index
+            base_dst = (2000 + ($urandom_range(0, 1000)));
+            num_words = 1 + $urandom_range(0, max_words-1);
+            run_case(base_src << 2, base_dst << 2, num_words, passed);
+            if (passed) pass_count++; else fail_count++;
         end
 
         $display("TEST SUMMARY: passed=%0d failed=%0d", pass_count, fail_count);

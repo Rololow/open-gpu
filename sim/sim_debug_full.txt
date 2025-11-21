@@ -1,0 +1,317 @@
+** Warning: (vlib-34) Library already exists at "work".
+Model Technology ModelSim - Intel FPGA Edition vlog 2020.1 Compiler 2020.02 Feb 28 2020
+Start time: 23:45:08 on Nov 21,2025
+vlog -incr -work work -sv C:\Users\waric\Documents\gpu\rtl\config.sv C:\Users\waric\Documents\gpu\rtl\dma.sv C:\Users\waric\Documents\gpu\rtl\mem_model.sv C:\Users\waric\Documents\gpu\rtl\mmu.sv C:\Users\waric\Documents\gpu\rtl\top.sv C:\Users\waric\Documents\gpu\sim\tb_top.sv 
+-- Skipping package config_pkg
+-- Skipping module dma
+-- Skipping module mem_model
+-- Skipping module mmu
+-- Skipping module top
+-- Skipping module tb_top
+
+Top level modules:
+	tb_top
+End time: 23:45:09 on Nov 21,2025, Elapsed time: 0:00:01
+Errors: 0, Warnings: 0
+Reading pref.tcl
+
+# 2020.1
+
+# vsim -c -onfinish exit work.tb_top -do "run -all; quit" 
+# Start time: 23:45:10 on Nov 21,2025
+# Loading sv_std.std
+# Loading work.tb_top
+# Loading work.top
+# Loading work.mmu
+# Loading work.config_pkg
+# Loading work.mem_model
+# Loading work.dma
+# run -all
+# 335000: DMA issue read addr=1024 pending_write_addr=x remain=16
+# 345000: MEM_MODEL read_en addr=1024 -> sampled=0x5a5a0000
+# 355000: DMA capture data=0x5a5a0000 for pending_write_addr=2048 (mem_read_valid)
+# 365000: DMA write addr=2048 data=0x5a5a0000 remain=16 (using pending_write_addr)
+# 375000: MEM_MODEL write addr=2048 data=0x5a5a0000
+# 375000: DMA issue read addr=1025 pending_write_addr=2048 remain=15
+# 385000: MEM_MODEL read_en addr=1025 -> sampled=0x5a5a0001
+# 395000: DMA capture data=0x5a5a0001 for pending_write_addr=2049 (mem_read_valid)
+# 405000: DMA write addr=2049 data=0x5a5a0001 remain=15 (using pending_write_addr)
+# 415000: MEM_MODEL write addr=2049 data=0x5a5a0001
+# 415000: DMA issue read addr=1026 pending_write_addr=2049 remain=14
+# 425000: MEM_MODEL read_en addr=1026 -> sampled=0x5a5a0002
+# 435000: DMA capture data=0x5a5a0002 for pending_write_addr=2050 (mem_read_valid)
+# 445000: DMA write addr=2050 data=0x5a5a0002 remain=14 (using pending_write_addr)
+# 455000: MEM_MODEL write addr=2050 data=0x5a5a0002
+# 455000: DMA issue read addr=1027 pending_write_addr=2050 remain=13
+# 465000: MEM_MODEL read_en addr=1027 -> sampled=0x5a5a0003
+# 475000: DMA capture data=0x5a5a0003 for pending_write_addr=2051 (mem_read_valid)
+# 485000: DMA write addr=2051 data=0x5a5a0003 remain=13 (using pending_write_addr)
+# 495000: MEM_MODEL write addr=2051 data=0x5a5a0003
+# 495000: DMA issue read addr=1028 pending_write_addr=2051 remain=12
+# 505000: MEM_MODEL read_en addr=1028 -> sampled=0x5a5a0004
+# 515000: DMA capture data=0x5a5a0004 for pending_write_addr=2052 (mem_read_valid)
+# 525000: DMA write addr=2052 data=0x5a5a0004 remain=12 (using pending_write_addr)
+# 535000: MEM_MODEL write addr=2052 data=0x5a5a0004
+# 535000: DMA issue read addr=1029 pending_write_addr=2052 remain=11
+# 545000: MEM_MODEL read_en addr=1029 -> sampled=0x5a5a0005
+# 555000: DMA capture data=0x5a5a0005 for pending_write_addr=2053 (mem_read_valid)
+# 565000: DMA write addr=2053 data=0x5a5a0005 remain=11 (using pending_write_addr)
+# 575000: MEM_MODEL write addr=2053 data=0x5a5a0005
+# 575000: DMA issue read addr=1030 pending_write_addr=2053 remain=10
+# 585000: MEM_MODEL read_en addr=1030 -> sampled=0x5a5a0006
+# 595000: DMA capture data=0x5a5a0006 for pending_write_addr=2054 (mem_read_valid)
+# 605000: DMA write addr=2054 data=0x5a5a0006 remain=10 (using pending_write_addr)
+# 615000: MEM_MODEL write addr=2054 data=0x5a5a0006
+# 615000: DMA issue read addr=1031 pending_write_addr=2054 remain=9
+# 625000: MEM_MODEL read_en addr=1031 -> sampled=0x5a5a0007
+# 635000: DMA capture data=0x5a5a0007 for pending_write_addr=2055 (mem_read_valid)
+# 645000: DMA write addr=2055 data=0x5a5a0007 remain=9 (using pending_write_addr)
+# 655000: MEM_MODEL write addr=2055 data=0x5a5a0007
+# 655000: DMA issue read addr=1032 pending_write_addr=2055 remain=8
+# 665000: MEM_MODEL read_en addr=1032 -> sampled=0x5a5a0008
+# 675000: DMA capture data=0x5a5a0008 for pending_write_addr=2056 (mem_read_valid)
+# 685000: DMA write addr=2056 data=0x5a5a0008 remain=8 (using pending_write_addr)
+# 695000: MEM_MODEL write addr=2056 data=0x5a5a0008
+# 695000: DMA issue read addr=1033 pending_write_addr=2056 remain=7
+# 705000: MEM_MODEL read_en addr=1033 -> sampled=0x5a5a0009
+# 715000: DMA capture data=0x5a5a0009 for pending_write_addr=2057 (mem_read_valid)
+# 725000: DMA write addr=2057 data=0x5a5a0009 remain=7 (using pending_write_addr)
+# 735000: MEM_MODEL write addr=2057 data=0x5a5a0009
+# 735000: DMA issue read addr=1034 pending_write_addr=2057 remain=6
+# 745000: MEM_MODEL read_en addr=1034 -> sampled=0x5a5a000a
+# 755000: DMA capture data=0x5a5a000a for pending_write_addr=2058 (mem_read_valid)
+# 765000: DMA write addr=2058 data=0x5a5a000a remain=6 (using pending_write_addr)
+# 775000: MEM_MODEL write addr=2058 data=0x5a5a000a
+# 775000: DMA issue read addr=1035 pending_write_addr=2058 remain=5
+# 785000: MEM_MODEL read_en addr=1035 -> sampled=0x5a5a000b
+# 795000: DMA capture data=0x5a5a000b for pending_write_addr=2059 (mem_read_valid)
+# 805000: DMA write addr=2059 data=0x5a5a000b remain=5 (using pending_write_addr)
+# 815000: MEM_MODEL write addr=2059 data=0x5a5a000b
+# 815000: DMA issue read addr=1036 pending_write_addr=2059 remain=4
+# 825000: MEM_MODEL read_en addr=1036 -> sampled=0x5a5a000c
+# 835000: DMA capture data=0x5a5a000c for pending_write_addr=2060 (mem_read_valid)
+# 845000: DMA write addr=2060 data=0x5a5a000c remain=4 (using pending_write_addr)
+# 855000: MEM_MODEL write addr=2060 data=0x5a5a000c
+# 855000: DMA issue read addr=1037 pending_write_addr=2060 remain=3
+# 865000: MEM_MODEL read_en addr=1037 -> sampled=0x5a5a000d
+# 875000: DMA capture data=0x5a5a000d for pending_write_addr=2061 (mem_read_valid)
+# 885000: DMA write addr=2061 data=0x5a5a000d remain=3 (using pending_write_addr)
+# 895000: MEM_MODEL write addr=2061 data=0x5a5a000d
+# 895000: DMA issue read addr=1038 pending_write_addr=2061 remain=2
+# 905000: MEM_MODEL read_en addr=1038 -> sampled=0x5a5a000e
+# 915000: DMA capture data=0x5a5a000e for pending_write_addr=2062 (mem_read_valid)
+# 925000: DMA write addr=2062 data=0x5a5a000e remain=2 (using pending_write_addr)
+# 935000: MEM_MODEL write addr=2062 data=0x5a5a000e
+# 935000: DMA issue read addr=1039 pending_write_addr=2062 remain=1
+# 945000: MEM_MODEL read_en addr=1039 -> sampled=0x5a5a000f
+# 955000: DMA capture data=0x5a5a000f for pending_write_addr=2063 (mem_read_valid)
+# 965000: DMA write addr=2063 data=0x5a5a000f remain=1 (using pending_write_addr)
+# 975000: MEM_MODEL write addr=2063 data=0x5a5a000f
+# CASE PASS: src=0x00001000 dst=0x00002000 words=16
+# CASE PASS: src=0x00001000 dst=0x00002000 words=0
+# 1275000: DMA issue read addr=1025 pending_write_addr=2063 remain=1
+# CASE FAIL: src=0x00001004 dst=0x00002008 words=1 mismatch at 0: got 0x00000000 exp 0x5a5a0000
+# 1285000: MEM_MODEL read_en addr=1025 -> sampled=0x5a5a0000
+# 1295000: DMA capture data=0x5a5a0000 for pending_write_addr=2050 (mem_read_valid)
+# 1305000: DMA write addr=2050 data=0x5a5a0000 remain=1 (using pending_write_addr)
+# 1315000: MEM_MODEL write addr=2050 data=0x5a5a0000
+# 1415000: DMA issue read addr=1088 pending_write_addr=2050 remain=8
+# CASE FAIL: src=0x00001103 dst=0x00002107 words=8 mismatch at 0: got 0x00000000 exp 0x5a5a0000
+# 1425000: MEM_MODEL read_en addr=1088 -> sampled=0x5a5a0000
+# 1435000: DMA capture data=0x5a5a0000 for pending_write_addr=2113 (mem_read_valid)
+# 1445000: DMA write addr=2113 data=0x5a5a0000 remain=8 (using pending_write_addr)
+# 1455000: MEM_MODEL write addr=2113 data=0x5a5a0000
+# 1455000: DMA issue read addr=1089 pending_write_addr=2113 remain=7
+# 1465000: MEM_MODEL read_en addr=1089 -> sampled=0x5a5a0001
+# 1475000: DMA capture data=0x5a5a0001 for pending_write_addr=2114 (mem_read_valid)
+# 1485000: DMA write addr=2114 data=0x5a5a0001 remain=7 (using pending_write_addr)
+# 1495000: MEM_MODEL write addr=2114 data=0x5a5a0001
+# 1495000: DMA issue read addr=1090 pending_write_addr=2114 remain=6
+# 1505000: MEM_MODEL read_en addr=1090 -> sampled=0x5a5a0002
+# 1515000: DMA capture data=0x5a5a0002 for pending_write_addr=2115 (mem_read_valid)
+# 1525000: DMA write addr=2115 data=0x5a5a0002 remain=6 (using pending_write_addr)
+# 1535000: MEM_MODEL write addr=2115 data=0x5a5a0002
+# 1535000: DMA issue read addr=1091 pending_write_addr=2115 remain=5
+# CONCURRENT CASE FAIL: mismatch at 0: got 0x00000000 expected 0xc3c30000
+# 1545000: MEM_MODEL read_en addr=1091 -> sampled=0x5a5a0003
+# 1555000: DMA capture data=0x5a5a0003 for pending_write_addr=2116 (mem_read_valid)
+# 1565000: DMA write addr=2116 data=0x5a5a0003 remain=5 (using pending_write_addr)
+# 1575000: MEM_MODEL write addr=2116 data=0x5a5a0003
+# 1575000: DMA issue read addr=1092 pending_write_addr=2116 remain=4
+# 1585000: MEM_MODEL read_en addr=1092 -> sampled=0x5a5a0004
+# 1595000: DMA capture data=0x5a5a0004 for pending_write_addr=2117 (mem_read_valid)
+# 1605000: DMA write addr=2117 data=0x5a5a0004 remain=4 (using pending_write_addr)
+# 1615000: MEM_MODEL write addr=2117 data=0x5a5a0004
+# 1615000: DMA issue read addr=1093 pending_write_addr=2117 remain=3
+# 1625000: MEM_MODEL read_en addr=1093 -> sampled=0x5a5a0005
+# 1635000: DMA capture data=0x5a5a0005 for pending_write_addr=2118 (mem_read_valid)
+# 1645000: DMA write addr=2118 data=0x5a5a0005 remain=3 (using pending_write_addr)
+# 1655000: MEM_MODEL write addr=2118 data=0x5a5a0005
+# 1655000: DMA issue read addr=1094 pending_write_addr=2118 remain=2
+# 1665000: MEM_MODEL read_en addr=1094 -> sampled=0x5a5a0006
+# 1675000: DMA capture data=0x5a5a0006 for pending_write_addr=2119 (mem_read_valid)
+# CASE FAIL: src=0x000002f4 dst=0x00002c70 words=29 mismatch at 0: got 0x00000000 exp 0x5a5a0000
+# 1685000: DMA write addr=2119 data=0x5a5a0006 remain=2 (using pending_write_addr)
+# 1695000: MEM_MODEL write addr=2119 data=0x5a5a0006
+# 1695000: DMA issue read addr=1095 pending_write_addr=2119 remain=1
+# 1705000: MEM_MODEL read_en addr=1095 -> sampled=0x5a5a0007
+# 1715000: DMA capture data=0x5a5a0007 for pending_write_addr=2120 (mem_read_valid)
+# 1725000: DMA write addr=2120 data=0x5a5a0007 remain=1 (using pending_write_addr)
+# 1735000: MEM_MODEL write addr=2120 data=0x5a5a0007
+# 1815000: DMA issue read addr=49 pending_write_addr=2120 remain=40
+# CASE FAIL: src=0x000000c4 dst=0x000023e0 words=40 mismatch at 0: got 0x00000000 exp 0x5a5a0000
+# 1825000: MEM_MODEL read_en addr=49 -> sampled=0x5a5a0000
+# 1835000: DMA capture data=0x5a5a0000 for pending_write_addr=2296 (mem_read_valid)
+# 1845000: DMA write addr=2296 data=0x5a5a0000 remain=40 (using pending_write_addr)
+# 1855000: MEM_MODEL write addr=2296 data=0x5a5a0000
+# 1855000: DMA issue read addr=50 pending_write_addr=2296 remain=39
+# 1865000: MEM_MODEL read_en addr=50 -> sampled=0x5a5a0001
+# 1875000: DMA capture data=0x5a5a0001 for pending_write_addr=2297 (mem_read_valid)
+# 1885000: DMA write addr=2297 data=0x5a5a0001 remain=39 (using pending_write_addr)
+# 1895000: MEM_MODEL write addr=2297 data=0x5a5a0001
+# 1895000: DMA issue read addr=51 pending_write_addr=2297 remain=38
+# 1905000: MEM_MODEL read_en addr=51 -> sampled=0x5a5a0002
+# 1915000: DMA capture data=0x5a5a0002 for pending_write_addr=2298 (mem_read_valid)
+# 1925000: DMA write addr=2298 data=0x5a5a0002 remain=38 (using pending_write_addr)
+# 1935000: MEM_MODEL write addr=2298 data=0x5a5a0002
+# 1935000: DMA issue read addr=52 pending_write_addr=2298 remain=37
+# 1945000: MEM_MODEL read_en addr=52 -> sampled=0x5a5a0003
+# 1955000: DMA capture data=0x5a5a0003 for pending_write_addr=2299 (mem_read_valid)
+# CASE FAIL: src=0x00000870 dst=0x00002dc8 words=1 mismatch at 0: got 0x00000000 exp 0x5a5a0000
+# 1965000: DMA write addr=2299 data=0x5a5a0003 remain=37 (using pending_write_addr)
+# 1975000: MEM_MODEL write addr=2299 data=0x5a5a0003
+# 1975000: DMA issue read addr=53 pending_write_addr=2299 remain=36
+# 1985000: MEM_MODEL read_en addr=53 -> sampled=0x5a5a0004
+# 1995000: DMA capture data=0x5a5a0004 for pending_write_addr=2300 (mem_read_valid)
+# 2005000: DMA write addr=2300 data=0x5a5a0004 remain=36 (using pending_write_addr)
+# 2015000: MEM_MODEL write addr=2300 data=0x5a5a0004
+# 2015000: DMA issue read addr=54 pending_write_addr=2300 remain=35
+# 2025000: MEM_MODEL read_en addr=54 -> sampled=0x5a5a0005
+# 2035000: DMA capture data=0x5a5a0005 for pending_write_addr=2301 (mem_read_valid)
+# 2045000: DMA write addr=2301 data=0x5a5a0005 remain=35 (using pending_write_addr)
+# 2055000: MEM_MODEL write addr=2301 data=0x5a5a0005
+# 2055000: DMA issue read addr=55 pending_write_addr=2301 remain=34
+# 2065000: MEM_MODEL read_en addr=55 -> sampled=0x5a5a0006
+# 2075000: DMA capture data=0x5a5a0006 for pending_write_addr=2302 (mem_read_valid)
+# 2085000: DMA write addr=2302 data=0x5a5a0006 remain=34 (using pending_write_addr)
+# 2095000: MEM_MODEL write addr=2302 data=0x5a5a0006
+# 2095000: DMA issue read addr=56 pending_write_addr=2302 remain=33
+# CASE FAIL: src=0x00000d94 dst=0x000029a4 words=60 mismatch at 0: got 0x00000000 exp 0x5a5a0000
+# 2105000: MEM_MODEL read_en addr=56 -> sampled=0x5a5a0007
+# 2115000: DMA capture data=0x5a5a0007 for pending_write_addr=2303 (mem_read_valid)
+# 2125000: DMA write addr=2303 data=0x5a5a0007 remain=33 (using pending_write_addr)
+# 2135000: MEM_MODEL write addr=2303 data=0x5a5a0007
+# 2135000: DMA issue read addr=57 pending_write_addr=2303 remain=32
+# 2145000: MEM_MODEL read_en addr=57 -> sampled=0x5a5a0008
+# 2155000: DMA capture data=0x5a5a0008 for pending_write_addr=2304 (mem_read_valid)
+# 2165000: DMA write addr=2304 data=0x5a5a0008 remain=32 (using pending_write_addr)
+# 2175000: MEM_MODEL write addr=2304 data=0x5a5a0008
+# 2175000: DMA issue read addr=58 pending_write_addr=2304 remain=31
+# 2185000: MEM_MODEL read_en addr=58 -> sampled=0x5a5a0009
+# 2195000: DMA capture data=0x5a5a0009 for pending_write_addr=2305 (mem_read_valid)
+# 2205000: DMA write addr=2305 data=0x5a5a0009 remain=31 (using pending_write_addr)
+# 2215000: MEM_MODEL write addr=2305 data=0x5a5a0009
+# 2215000: DMA issue read addr=59 pending_write_addr=2305 remain=30
+# 2225000: MEM_MODEL read_en addr=59 -> sampled=0x5a5a000a
+# 2235000: DMA capture data=0x5a5a000a for pending_write_addr=2306 (mem_read_valid)
+# CASE FAIL: src=0x0000014c dst=0x00002234 words=61 mismatch at 0: got 0x00000000 exp 0x5a5a0000
+# 2245000: DMA write addr=2306 data=0x5a5a000a remain=30 (using pending_write_addr)
+# 2255000: MEM_MODEL write addr=2306 data=0x5a5a000a
+# 2255000: DMA issue read addr=60 pending_write_addr=2306 remain=29
+# 2265000: MEM_MODEL read_en addr=60 -> sampled=0x5a5a000b
+# 2275000: DMA capture data=0x5a5a000b for pending_write_addr=2307 (mem_read_valid)
+# 2285000: DMA write addr=2307 data=0x5a5a000b remain=29 (using pending_write_addr)
+# 2295000: MEM_MODEL write addr=2307 data=0x5a5a000b
+# 2295000: DMA issue read addr=61 pending_write_addr=2307 remain=28
+# 2305000: MEM_MODEL read_en addr=61 -> sampled=0x5a5a000c
+# 2315000: DMA capture data=0x5a5a000c for pending_write_addr=2308 (mem_read_valid)
+# 2325000: DMA write addr=2308 data=0x5a5a000c remain=28 (using pending_write_addr)
+# 2335000: MEM_MODEL write addr=2308 data=0x5a5a000c
+# 2335000: DMA issue read addr=62 pending_write_addr=2308 remain=27
+# 2345000: MEM_MODEL read_en addr=62 -> sampled=0x5a5a000d
+# 2355000: DMA capture data=0x5a5a000d for pending_write_addr=2309 (mem_read_valid)
+# 2365000: DMA write addr=2309 data=0x5a5a000d remain=27 (using pending_write_addr)
+# 2375000: MEM_MODEL write addr=2309 data=0x5a5a000d
+# 2375000: DMA issue read addr=63 pending_write_addr=2309 remain=26
+# CASE FAIL: src=0x00000668 dst=0x00002c64 words=23 mismatch at 0: got 0x00000000 exp 0x5a5a0000
+# 2385000: MEM_MODEL read_en addr=63 -> sampled=0x5a5a000e
+# 2395000: DMA capture data=0x5a5a000e for pending_write_addr=2310 (mem_read_valid)
+# 2405000: DMA write addr=2310 data=0x5a5a000e remain=26 (using pending_write_addr)
+# 2415000: MEM_MODEL write addr=2310 data=0x5a5a000e
+# 2415000: DMA issue read addr=64 pending_write_addr=2310 remain=25
+# 2425000: MEM_MODEL read_en addr=64 -> sampled=0x5a5a000f
+# 2435000: DMA capture data=0x5a5a000f for pending_write_addr=2311 (mem_read_valid)
+# 2445000: DMA write addr=2311 data=0x5a5a000f remain=25 (using pending_write_addr)
+# 2455000: MEM_MODEL write addr=2311 data=0x5a5a000f
+# 2455000: DMA issue read addr=65 pending_write_addr=2311 remain=24
+# 2465000: MEM_MODEL read_en addr=65 -> sampled=0x5a5a0010
+# 2475000: DMA capture data=0x5a5a0010 for pending_write_addr=2312 (mem_read_valid)
+# 2485000: DMA write addr=2312 data=0x5a5a0010 remain=24 (using pending_write_addr)
+# 2495000: MEM_MODEL write addr=2312 data=0x5a5a0010
+# 2495000: DMA issue read addr=66 pending_write_addr=2312 remain=23
+# 2505000: MEM_MODEL read_en addr=66 -> sampled=0x5a5a0011
+# 2515000: DMA capture data=0x5a5a0011 for pending_write_addr=2313 (mem_read_valid)
+# CASE FAIL: src=0x00000a64 dst=0x00002c78 words=31 mismatch at 0: got 0x00000000 exp 0x5a5a0000
+# 2525000: DMA write addr=2313 data=0x5a5a0011 remain=23 (using pending_write_addr)
+# 2535000: MEM_MODEL write addr=2313 data=0x5a5a0011
+# 2535000: DMA issue read addr=67 pending_write_addr=2313 remain=22
+# 2545000: MEM_MODEL read_en addr=67 -> sampled=0x5a5a0012
+# 2555000: DMA capture data=0x5a5a0012 for pending_write_addr=2314 (mem_read_valid)
+# 2565000: DMA write addr=2314 data=0x5a5a0012 remain=22 (using pending_write_addr)
+# 2575000: MEM_MODEL write addr=2314 data=0x5a5a0012
+# 2575000: DMA issue read addr=68 pending_write_addr=2314 remain=21
+# 2585000: MEM_MODEL read_en addr=68 -> sampled=0x5a5a0013
+# 2595000: DMA capture data=0x5a5a0013 for pending_write_addr=2315 (mem_read_valid)
+# 2605000: DMA write addr=2315 data=0x5a5a0013 remain=21 (using pending_write_addr)
+# 2615000: MEM_MODEL write addr=2315 data=0x5a5a0013
+# 2615000: DMA issue read addr=69 pending_write_addr=2315 remain=20
+# 2625000: MEM_MODEL read_en addr=69 -> sampled=0x5a5a0014
+# 2635000: DMA capture data=0x5a5a0014 for pending_write_addr=2316 (mem_read_valid)
+# 2645000: DMA write addr=2316 data=0x5a5a0014 remain=20 (using pending_write_addr)
+# 2655000: MEM_MODEL write addr=2316 data=0x5a5a0014
+# 2655000: DMA issue read addr=70 pending_write_addr=2316 remain=19
+# CASE FAIL: src=0x00000484 dst=0x00002400 words=21 mismatch at 0: got 0x00000000 exp 0x5a5a0000
+# 2665000: MEM_MODEL read_en addr=70 -> sampled=0x5a5a0015
+# 2675000: DMA capture data=0x5a5a0015 for pending_write_addr=2317 (mem_read_valid)
+# 2685000: DMA write addr=2317 data=0x5a5a0015 remain=19 (using pending_write_addr)
+# 2695000: MEM_MODEL write addr=2317 data=0x5a5a0015
+# 2695000: DMA issue read addr=71 pending_write_addr=2317 remain=18
+# 2705000: MEM_MODEL read_en addr=71 -> sampled=0x5a5a0016
+# 2715000: DMA capture data=0x5a5a0016 for pending_write_addr=2318 (mem_read_valid)
+# 2725000: DMA write addr=2318 data=0x5a5a0016 remain=18 (using pending_write_addr)
+# 2735000: MEM_MODEL write addr=2318 data=0x5a5a0016
+# 2735000: DMA issue read addr=72 pending_write_addr=2318 remain=17
+# 2745000: MEM_MODEL read_en addr=72 -> sampled=0x5a5a0017
+# 2755000: DMA capture data=0x5a5a0017 for pending_write_addr=2319 (mem_read_valid)
+# 2765000: DMA write addr=2319 data=0x5a5a0017 remain=17 (using pending_write_addr)
+# 2775000: MEM_MODEL write addr=2319 data=0x5a5a0017
+# 2775000: DMA issue read addr=73 pending_write_addr=2319 remain=16
+# 2785000: MEM_MODEL read_en addr=73 -> sampled=0x5a5a0018
+# 2795000: DMA capture data=0x5a5a0018 for pending_write_addr=2320 (mem_read_valid)
+# CASE FAIL: src=0x00000a70 dst=0x00002c10 words=16 mismatch at 0: got 0x00000000 exp 0x5a5a0000
+# 2805000: DMA write addr=2320 data=0x5a5a0018 remain=16 (using pending_write_addr)
+# 2815000: MEM_MODEL write addr=2320 data=0x5a5a0018
+# 2815000: DMA issue read addr=74 pending_write_addr=2320 remain=15
+# 2825000: MEM_MODEL read_en addr=74 -> sampled=0x5a5a0019
+# 2835000: DMA capture data=0x5a5a0019 for pending_write_addr=2321 (mem_read_valid)
+# 2845000: DMA write addr=2321 data=0x5a5a0019 remain=15 (using pending_write_addr)
+# 2855000: MEM_MODEL write addr=2321 data=0x5a5a0019
+# 2855000: DMA issue read addr=75 pending_write_addr=2321 remain=14
+# 2865000: MEM_MODEL read_en addr=75 -> sampled=0x5a5a001a
+# 2875000: DMA capture data=0x5a5a001a for pending_write_addr=2322 (mem_read_valid)
+# 2885000: DMA write addr=2322 data=0x5a5a001a remain=14 (using pending_write_addr)
+# 2895000: MEM_MODEL write addr=2322 data=0x5a5a001a
+# 2895000: DMA issue read addr=76 pending_write_addr=2322 remain=13
+# 2905000: MEM_MODEL read_en addr=76 -> sampled=0x5a5a001b
+# 2915000: DMA capture data=0x5a5a001b for pending_write_addr=2323 (mem_read_valid)
+# 2925000: DMA write addr=2323 data=0x5a5a001b remain=13 (using pending_write_addr)
+# 2935000: MEM_MODEL write addr=2323 data=0x5a5a001b
+# 2935000: DMA issue read addr=77 pending_write_addr=2323 remain=12
+# CASE FAIL: src=0x00000d18 dst=0x00002834 words=64 mismatch at 0: got 0x00000000 exp 0x5a5a0000
+# TEST SUMMARY: passed=2 failed=13
+# ** Fatal: Assertion error.
+#    Time: 2935 ns  Scope: tb_top File: C:/Users/waric/Documents/gpu/sim/tb_top.sv Line: 220
+# ** Note: $finish    : C:/Users/waric/Documents/gpu/sim/tb_top.sv(220)
+#    Time: 2935 ns  Iteration: 1  Instance: /tb_top
+# End time: 23:45:11 on Nov 21,2025, Elapsed time: 0:00:01
+# Errors: 1, Warnings: 0
