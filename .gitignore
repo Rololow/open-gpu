@@ -11,3 +11,5 @@ transcript
 sim/work/
 sim/sim_build/
 sim/tests/__pycache__/
+
+*.log

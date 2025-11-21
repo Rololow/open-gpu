@@ -55,7 +55,17 @@ module top #(
 
     // Instantiate DMA
     logic dma_done;
-    dma u_dma (.clk(clk), .rst_n(rst_n), .start(dma_start_reg), .src_addr(dma_src_reg), .dst_addr(dma_dst_reg), .len(dma_len_reg), .src_resident(mmu_src_resident), .dst_resident(mmu_dst_resident), .done(dma_done));
+    // Memory model instance
+    logic mem_read_en;
+    logic [31:0] mem_read_addr;
+    logic [31:0] mem_read_data;
+    logic mem_write_en;
+    logic [31:0] mem_write_addr;
+    logic [31:0] mem_write_data;
+
+    mem_model u_mem (.clk(clk), .rst_n(rst_n), .read_en(mem_read_en), .read_addr(mem_read_addr), .read_data(mem_read_data), .write_en(mem_write_en), .write_addr(mem_write_addr), .write_data(mem_write_data));
+
+    dma u_dma (.clk(clk), .rst_n(rst_n), .start(dma_start_reg), .src_addr(dma_src_reg), .dst_addr(dma_dst_reg), .len(dma_len_reg), .src_resident(mmu_src_resident), .dst_resident(mmu_dst_resident), .done(dma_done), .mem_read_en(mem_read_en), .mem_read_addr(mem_read_addr), .mem_read_data(mem_read_data), .mem_write_en(mem_write_en), .mem_write_addr(mem_write_addr), .mem_write_data(mem_write_data));
 
     // CFG response: reflect DMA status for simple interaction
     assign cfg_resp_valid = cfg_req_valid; // simple echo
