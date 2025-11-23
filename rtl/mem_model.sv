@@ -39,14 +39,18 @@ module mem_model #(
             end
             // synchronous read: output available next cycle
             if (read_en) begin
+                // sample address and data into the registered outputs
                 if (read_addr < MEM_WORDS)
                     read_data_reg <= mem[read_addr];
                 else
                     read_data_reg <= 32'd0;
-                if (DEBUG) $display("%0t: MEM_MODEL read_en addr=%0d -> sampled=0x%08h", $time, read_addr, mem[read_addr]);
                 // indicate read_data will be valid next cycle
                 read_valid_reg <= 1'b1;
+                // extra debug: always-print when a read is sampled so it's visible even if other prints are noisy
+                $display("%0t: MEM_MODEL sampled read_en addr=%0d -> queued_data=0x%08h read_valid_reg(next)=1", $time, read_addr, mem[read_addr]);
             end else begin
+                // indicate no valid data next cycle
+                if (read_valid_reg && DEBUG) $display("%0t: MEM_MODEL clearing read_valid (no new read_en)", $time);
                 read_valid_reg <= 1'b0;
             end
         end

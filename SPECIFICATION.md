@@ -153,6 +153,85 @@ Cette extension permettrait au GPU d'adresser des scènes avec des milliards de 
 - Lister les repos à cloner (MIAOW + 3 autres), lancer l'analyse comparative.
 - Détailler l'architecture du command processor + format de commande.
 
+## DMA: Format de descripteurs et mode chaîne (descriptor chaining)
+
+Le design fournit un contrôleur DMA simple capable de deux modes d'opération :
+- mode direct (programmer `SRC`, `DST`, `LEN`, puis pulser `START`),
+- mode descriptor (le DMA lit une table de descripteurs en mémoire et exécute chaque segment en chaîne).
+
+Points clés :
+- Les registres MMIO exposés par le `top` (offsets en octets) :
+  - `0x10` : `SRC_LO` (low 32 bits de l'adresse source)
+  - `0x14` : `SRC_HI` (high 32 bits de l'adresse source)
+  - `0x18` : `DST_LO` (low 32 bits de l'adresse destination)
+  - `0x1C` : `DST_HI` (high 32 bits de l'adresse destination)
+  - `0x20` : `LEN` (nombre de mots 32-bit à transférer)
+  - `0x24` : `START` (écrire 1 pour démarrer; le bit est échantillonné et auto-clear)
+  - `0x28` : `DESC_PTR` (adresse en octets du premier descripteur)
+  - `0x30` : `DESC_MODE` (1 = activer lecture de descripteurs)
+  - `0x2C` : `STATUS` (bit0 = `DONE` sticky — lecture pour savoir si l'opération est terminée)
+
+
+Format d'un descripteur (chaque descripteur = 4 mots 32-bit consécutifs, stockés en mémoire):
+
+- mot 0 : `SRC_ADDR` (adresse source en octets)
+- mot 1 : `DST_ADDR` (adresse destination en octets)
+- mot 2 : `LEN` (nombre de mots 32-bit à copier)
+- mot 3 : `NEXT_DESC_PTR | FLAGS` (bits mixtes — pointeur + flags)
+
+Disposition des bits du mot 3 (32 bits):
+
+- bit 0 : `IRQ_ON_COMPLETE` — si 1, le DMA pulse une IRQ à la fin du traitement de ce descripteur (fin de chaîne).
+- bit 1 : `IRQ_ON_EACH` — si 1, le DMA pulse une IRQ après la complétion de ce descripteur même s'il chaîne vers le suivant.
+- bits [4:2] : `PRIO` — 3 bits de priorité (valeur 0..7) réservés pour usage futur.
+- bits [31:5] : `ATTRS` — champs d'attributs (27 bits) pour hints (cache, ordering, extension future).
+
+Note: Les champs `NEXT_DESC_PTR` et `FLAGS` sont packés dans ce mot. L'implémentation actuelle stocke l'adresse complète en octets dans `word3` et interprète les bits bas pour flags. Pour aligner les usages, évitez d'utiliser les bits bas de l'adresse pour des adresses non-alignées/packed si vous activez des flags.
+
+Remarques d'implémentation :
+- `DESC_PTR` et `NEXT_DESC_PTR` sont des adresses en octets mais la logique de lecture interne fait la lecture mot-par-mot (le contrôleur convertit en index mot en divisant par 4).
+- Lorsqu'un descripteur est assemblé, le DMA exécute le transfert (avec sémantique `memmove` pour gérer le recouvrement source/destination en choissant la direction appropriée).
+- Quand un transfert issu d'un descripteur est terminé, si `NEXT_DESC_PTR != 0` et que `DESC_MODE` est toujours actif, le DMA chaînera automatiquement vers le descripteur suivant (retour au state `FETCH_DESC`).
+- Si `DESC_MODE` est désactivé pendant une lecture de descripteur, le contrôleur abandonne proprement le fetch et retourne à `IDLE` (prévention de blocage observée pendant le développement).
+
+Exemple d'usage (inspiré du `sim/tb_top.sv` fourni) :
+
+1. Préparer en mémoire deux descripteurs à l'adresse byte `0x8000` (on montre ici l'initialisation au niveau mot `mem[desc_base + i]` avec `desc_base = 0x8000 >> 2`):
+
+```systemverilog
+// descriptor 0
+mem[desc_base + 0] = 32'h00005000; // src byte addr
+mem[desc_base + 1] = 32'h00006000; // dst byte addr
+mem[desc_base + 2] = 8;            // len (words)
+mem[desc_base + 3] = 32'h00008010; // next_desc_ptr -> points to descriptor 1 (byte addr)
+
+// descriptor 1
+mem[desc_base + 4] = 32'h00005100; // src
+mem[desc_base + 5] = 32'h00006200; // dst
+mem[desc_base + 6] = 4;            // len
+mem[desc_base + 7] = 32'h0;        // next = 0 (end)
+```
+
+2. Programmer les registres MMIO :
+
+```systemverilog
+write_reg(0x28, 32'h00008000); // DESC_PTR (byte addr)
+write_reg(0x30, 32'h1);         // DESC_MODE = 1
+write_reg(0x24, 32'h1);         // START (pulse; TB pulse deux fois pour robustesse)
+```
+
+3. Poller `STATUS` (`0x2C`) jusqu'à ce que `bit0 == 1` puis vérifier les destinations mémoire.
+
+Conseils pratiques et limitations :
+- Le modèle mémoire embarqué (`mem_model`) est synchrone et retourne la donnée l'itération suivante après `read_en` ; le DMA gère un petit pipeline d'ordres (FIFO) pour lier chaque lecture à son adresse d'écriture correspondante.
+- Le format de descripteur est minimal — on peut étendre `word3` pour contenir des flags (e.g., IRQ on completion, priority) ou des attributs (cache hints, bypass), mais cela nécessitera un mapping défini et l'extension du TB.
+- Pendant la phase de développement, des impressions debug (`DEBUG=1`) ont aidé à stabiliser la logique; après validation, il est recommandé de désactiver le bruit de trace (`rtl/config.sv`) pour des runs de regression plus propres.
+
+Si vous voulez, je peux :
+- formaliser une version étendue du descripteur (flags IRQ/prio/attributes),
+- ajouter un exemple de driver hôte (Python/C) qui écrit les descripteurs via MMIO, ou
+- rédiger une section de tests de stress pour vérifier l'atomicité et la résilience au recouvrement (memmove semantics).
+
 ---
 
 Annexe : Questions ouvertes (à décider)

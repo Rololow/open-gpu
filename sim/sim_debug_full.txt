@@ -1,9 +1,9 @@
 ** Warning: (vlib-34) Library already exists at "work".
 Model Technology ModelSim - Intel FPGA Edition vlog 2020.1 Compiler 2020.02 Feb 28 2020
-Start time: 23:45:08 on Nov 21,2025
+Start time: 00:25:07 on Nov 22,2025
 vlog -incr -work work -sv C:\Users\waric\Documents\gpu\rtl\config.sv C:\Users\waric\Documents\gpu\rtl\dma.sv C:\Users\waric\Documents\gpu\rtl\mem_model.sv C:\Users\waric\Documents\gpu\rtl\mmu.sv C:\Users\waric\Documents\gpu\rtl\top.sv C:\Users\waric\Documents\gpu\sim\tb_top.sv 
 -- Skipping package config_pkg
--- Skipping module dma
+-- Compiling module dma
 -- Skipping module mem_model
 -- Skipping module mmu
 -- Skipping module top
@@ -11,14 +11,14 @@ vlog -incr -work work -sv C:\Users\waric\Documents\gpu\rtl\config.sv C:\Users\wa
 
 Top level modules:
 	tb_top
-End time: 23:45:09 on Nov 21,2025, Elapsed time: 0:00:01
+End time: 00:25:07 on Nov 22,2025, Elapsed time: 0:00:00
 Errors: 0, Warnings: 0
 Reading pref.tcl
 
 # 2020.1
 
 # vsim -c -onfinish exit work.tb_top -do "run -all; quit" 
-# Start time: 23:45:10 on Nov 21,2025
+# Start time: 00:25:08 on Nov 22,2025
 # Loading sv_std.std
 # Loading work.tb_top
 # Loading work.top
@@ -27,291 +27,893 @@ Reading pref.tcl
 # Loading work.mem_model
 # Loading work.dma
 # run -all
-# 335000: DMA issue read addr=1024 pending_write_addr=x remain=16
+# TOP: cfg write SRC_LO=0x00001000 at 215000
+# TOP: cfg write SRC_HI=0x00000000 at 235000
+# TOP: cfg write DST_LO=0x00002000 at 255000
+# TOP: cfg write DST_HI=0x00000000 at 275000
+# TOP: cfg write LEN=0x00000010 at 295000
+# TB: program start src=0x00001000 dst=0x00002000 words=16
+# TOP: cfg write START=1 at 315000
+# 325000: DMA sampled start=1 state=0 src_res=1 dst_res=1
+# 325000: DMA IDLE saw start src_addr=0x00001000 dst_addr=0x00002000 len=16 desc_mode=x
+# TOP: cfg write START=1 at 335000
+# 335000: DMA BUSY state remain=16 fifo_count=0 read_index=1024 write_index=2048 fifo_head=0 fifo_tail=0
+# 335000: DMA issue read addr=1024 pending_fifo_tail=0 remain=16
 # 345000: MEM_MODEL read_en addr=1024 -> sampled=0x5a5a0000
+# 345000: DMA sampled start=1 state=2 src_res=1 dst_res=1
+# 345000: DMA BUSY state remain=16 fifo_count=1 read_index=1025 write_index=2049 fifo_head=0 fifo_tail=1
+# 345000: DMA issue read addr=1025 pending_fifo_tail=1 remain=16
+# 355000: MEM_MODEL read_en addr=1025 -> sampled=0x5a5a0001
+# 355000: DMA BUSY state remain=16 fifo_count=2 read_index=1026 write_index=2050 fifo_head=0 fifo_tail=2
 # 355000: DMA capture data=0x5a5a0000 for pending_write_addr=2048 (mem_read_valid)
-# 365000: DMA write addr=2048 data=0x5a5a0000 remain=16 (using pending_write_addr)
-# 375000: MEM_MODEL write addr=2048 data=0x5a5a0000
-# 375000: DMA issue read addr=1025 pending_write_addr=2048 remain=15
-# 385000: MEM_MODEL read_en addr=1025 -> sampled=0x5a5a0001
-# 395000: DMA capture data=0x5a5a0001 for pending_write_addr=2049 (mem_read_valid)
-# 405000: DMA write addr=2049 data=0x5a5a0001 remain=15 (using pending_write_addr)
-# 415000: MEM_MODEL write addr=2049 data=0x5a5a0001
-# 415000: DMA issue read addr=1026 pending_write_addr=2049 remain=14
-# 425000: MEM_MODEL read_en addr=1026 -> sampled=0x5a5a0002
-# 435000: DMA capture data=0x5a5a0002 for pending_write_addr=2050 (mem_read_valid)
-# 445000: DMA write addr=2050 data=0x5a5a0002 remain=14 (using pending_write_addr)
-# 455000: MEM_MODEL write addr=2050 data=0x5a5a0002
-# 455000: DMA issue read addr=1027 pending_write_addr=2050 remain=13
-# 465000: MEM_MODEL read_en addr=1027 -> sampled=0x5a5a0003
-# 475000: DMA capture data=0x5a5a0003 for pending_write_addr=2051 (mem_read_valid)
-# 485000: DMA write addr=2051 data=0x5a5a0003 remain=13 (using pending_write_addr)
-# 495000: MEM_MODEL write addr=2051 data=0x5a5a0003
-# 495000: DMA issue read addr=1028 pending_write_addr=2051 remain=12
-# 505000: MEM_MODEL read_en addr=1028 -> sampled=0x5a5a0004
-# 515000: DMA capture data=0x5a5a0004 for pending_write_addr=2052 (mem_read_valid)
-# 525000: DMA write addr=2052 data=0x5a5a0004 remain=12 (using pending_write_addr)
-# 535000: MEM_MODEL write addr=2052 data=0x5a5a0004
-# 535000: DMA issue read addr=1029 pending_write_addr=2052 remain=11
-# 545000: MEM_MODEL read_en addr=1029 -> sampled=0x5a5a0005
-# 555000: DMA capture data=0x5a5a0005 for pending_write_addr=2053 (mem_read_valid)
-# 565000: DMA write addr=2053 data=0x5a5a0005 remain=11 (using pending_write_addr)
-# 575000: MEM_MODEL write addr=2053 data=0x5a5a0005
-# 575000: DMA issue read addr=1030 pending_write_addr=2053 remain=10
-# 585000: MEM_MODEL read_en addr=1030 -> sampled=0x5a5a0006
-# 595000: DMA capture data=0x5a5a0006 for pending_write_addr=2054 (mem_read_valid)
-# 605000: DMA write addr=2054 data=0x5a5a0006 remain=10 (using pending_write_addr)
-# 615000: MEM_MODEL write addr=2054 data=0x5a5a0006
-# 615000: DMA issue read addr=1031 pending_write_addr=2054 remain=9
-# 625000: MEM_MODEL read_en addr=1031 -> sampled=0x5a5a0007
-# 635000: DMA capture data=0x5a5a0007 for pending_write_addr=2055 (mem_read_valid)
-# 645000: DMA write addr=2055 data=0x5a5a0007 remain=9 (using pending_write_addr)
-# 655000: MEM_MODEL write addr=2055 data=0x5a5a0007
-# 655000: DMA issue read addr=1032 pending_write_addr=2055 remain=8
-# 665000: MEM_MODEL read_en addr=1032 -> sampled=0x5a5a0008
-# 675000: DMA capture data=0x5a5a0008 for pending_write_addr=2056 (mem_read_valid)
-# 685000: DMA write addr=2056 data=0x5a5a0008 remain=8 (using pending_write_addr)
-# 695000: MEM_MODEL write addr=2056 data=0x5a5a0008
-# 695000: DMA issue read addr=1033 pending_write_addr=2056 remain=7
-# 705000: MEM_MODEL read_en addr=1033 -> sampled=0x5a5a0009
-# 715000: DMA capture data=0x5a5a0009 for pending_write_addr=2057 (mem_read_valid)
-# 725000: DMA write addr=2057 data=0x5a5a0009 remain=7 (using pending_write_addr)
-# 735000: MEM_MODEL write addr=2057 data=0x5a5a0009
-# 735000: DMA issue read addr=1034 pending_write_addr=2057 remain=6
-# 745000: MEM_MODEL read_en addr=1034 -> sampled=0x5a5a000a
-# 755000: DMA capture data=0x5a5a000a for pending_write_addr=2058 (mem_read_valid)
-# 765000: DMA write addr=2058 data=0x5a5a000a remain=6 (using pending_write_addr)
-# 775000: MEM_MODEL write addr=2058 data=0x5a5a000a
-# 775000: DMA issue read addr=1035 pending_write_addr=2058 remain=5
-# 785000: MEM_MODEL read_en addr=1035 -> sampled=0x5a5a000b
-# 795000: DMA capture data=0x5a5a000b for pending_write_addr=2059 (mem_read_valid)
-# 805000: DMA write addr=2059 data=0x5a5a000b remain=5 (using pending_write_addr)
-# 815000: MEM_MODEL write addr=2059 data=0x5a5a000b
-# 815000: DMA issue read addr=1036 pending_write_addr=2059 remain=4
-# 825000: MEM_MODEL read_en addr=1036 -> sampled=0x5a5a000c
-# 835000: DMA capture data=0x5a5a000c for pending_write_addr=2060 (mem_read_valid)
-# 845000: DMA write addr=2060 data=0x5a5a000c remain=4 (using pending_write_addr)
-# 855000: MEM_MODEL write addr=2060 data=0x5a5a000c
-# 855000: DMA issue read addr=1037 pending_write_addr=2060 remain=3
-# 865000: MEM_MODEL read_en addr=1037 -> sampled=0x5a5a000d
-# 875000: DMA capture data=0x5a5a000d for pending_write_addr=2061 (mem_read_valid)
-# 885000: DMA write addr=2061 data=0x5a5a000d remain=3 (using pending_write_addr)
-# 895000: MEM_MODEL write addr=2061 data=0x5a5a000d
-# 895000: DMA issue read addr=1038 pending_write_addr=2061 remain=2
-# 905000: MEM_MODEL read_en addr=1038 -> sampled=0x5a5a000e
-# 915000: DMA capture data=0x5a5a000e for pending_write_addr=2062 (mem_read_valid)
-# 925000: DMA write addr=2062 data=0x5a5a000e remain=2 (using pending_write_addr)
-# 935000: MEM_MODEL write addr=2062 data=0x5a5a000e
-# 935000: DMA issue read addr=1039 pending_write_addr=2062 remain=1
-# 945000: MEM_MODEL read_en addr=1039 -> sampled=0x5a5a000f
-# 955000: DMA capture data=0x5a5a000f for pending_write_addr=2063 (mem_read_valid)
-# 965000: DMA write addr=2063 data=0x5a5a000f remain=1 (using pending_write_addr)
-# 975000: MEM_MODEL write addr=2063 data=0x5a5a000f
+# 355000: DMA write addr=2048 data=0x5a5a0000 remain=16 (using pending_write_fifo)
+# 355000: DMA issue read addr=1026 pending_fifo_tail=2 remain=16
+# 365000: MEM_MODEL write addr=2048 data=0x5a5a0000
+# 365000: MEM_MODEL read_en addr=1026 -> sampled=0x5a5a0002
+# 365000: DMA BUSY state remain=15 fifo_count=3 read_index=1027 write_index=2051 fifo_head=1 fifo_tail=3
+# 365000: DMA capture data=0x5a5a0001 for pending_write_addr=2049 (mem_read_valid)
+# 365000: DMA write addr=2049 data=0x5a5a0001 remain=15 (using pending_write_fifo)
+# 365000: DMA issue read addr=1027 pending_fifo_tail=3 remain=15
+# 375000: MEM_MODEL write addr=2049 data=0x5a5a0001
+# 375000: MEM_MODEL read_en addr=1027 -> sampled=0x5a5a0003
+# 375000: DMA BUSY state remain=14 fifo_count=4 read_index=1028 write_index=2052 fifo_head=2 fifo_tail=0
+# 375000: DMA capture data=0x5a5a0002 for pending_write_addr=2050 (mem_read_valid)
+# 375000: DMA write addr=2050 data=0x5a5a0002 remain=14 (using pending_write_fifo)
+# 375000: DMA stall - FIFO full: remain=14 fifo_count=4
+# 385000: MEM_MODEL write addr=2050 data=0x5a5a0002
+# 385000: DMA BUSY state remain=13 fifo_count=3 read_index=1028 write_index=2052 fifo_head=3 fifo_tail=0
+# 385000: DMA capture data=0x5a5a0003 for pending_write_addr=2051 (mem_read_valid)
+# 385000: DMA write addr=2051 data=0x5a5a0003 remain=13 (using pending_write_fifo)
+# 385000: DMA issue read addr=1028 pending_fifo_tail=0 remain=13
+# 395000: MEM_MODEL write addr=2051 data=0x5a5a0003
+# 395000: MEM_MODEL read_en addr=1028 -> sampled=0x5a5a0004
+# 395000: DMA BUSY state remain=12 fifo_count=4 read_index=1029 write_index=2053 fifo_head=0 fifo_tail=1
+# 395000: DMA stall - FIFO full: remain=12 fifo_count=4
+# 405000: DMA BUSY state remain=12 fifo_count=4 read_index=1029 write_index=2053 fifo_head=0 fifo_tail=1
+# 405000: DMA capture data=0x5a5a0004 for pending_write_addr=2052 (mem_read_valid)
+# 405000: DMA write addr=2052 data=0x5a5a0004 remain=12 (using pending_write_fifo)
+# 405000: DMA stall - FIFO full: remain=12 fifo_count=4
+# 415000: MEM_MODEL write addr=2052 data=0x5a5a0004
+# 415000: DMA BUSY state remain=11 fifo_count=3 read_index=1029 write_index=2053 fifo_head=1 fifo_tail=1
+# 415000: DMA issue read addr=1029 pending_fifo_tail=1 remain=11
+# 425000: MEM_MODEL read_en addr=1029 -> sampled=0x5a5a0005
+# 425000: DMA BUSY state remain=11 fifo_count=4 read_index=1030 write_index=2054 fifo_head=1 fifo_tail=2
+# 425000: DMA stall - FIFO full: remain=11 fifo_count=4
+# 435000: DMA BUSY state remain=11 fifo_count=4 read_index=1030 write_index=2054 fifo_head=1 fifo_tail=2
+# 435000: DMA capture data=0x5a5a0005 for pending_write_addr=2053 (mem_read_valid)
+# 435000: DMA write addr=2053 data=0x5a5a0005 remain=11 (using pending_write_fifo)
+# 435000: DMA stall - FIFO full: remain=11 fifo_count=4
+# 445000: MEM_MODEL write addr=2053 data=0x5a5a0005
+# 445000: DMA BUSY state remain=10 fifo_count=3 read_index=1030 write_index=2054 fifo_head=2 fifo_tail=2
+# 445000: DMA issue read addr=1030 pending_fifo_tail=2 remain=10
+# 455000: MEM_MODEL read_en addr=1030 -> sampled=0x5a5a0006
+# 455000: DMA BUSY state remain=10 fifo_count=4 read_index=1031 write_index=2055 fifo_head=2 fifo_tail=3
+# 455000: DMA stall - FIFO full: remain=10 fifo_count=4
+# 465000: DMA BUSY state remain=10 fifo_count=4 read_index=1031 write_index=2055 fifo_head=2 fifo_tail=3
+# 465000: DMA capture data=0x5a5a0006 for pending_write_addr=2054 (mem_read_valid)
+# 465000: DMA write addr=2054 data=0x5a5a0006 remain=10 (using pending_write_fifo)
+# 465000: DMA stall - FIFO full: remain=10 fifo_count=4
+# 475000: MEM_MODEL write addr=2054 data=0x5a5a0006
+# 475000: DMA BUSY state remain=9 fifo_count=3 read_index=1031 write_index=2055 fifo_head=3 fifo_tail=3
+# 475000: DMA issue read addr=1031 pending_fifo_tail=3 remain=9
+# 485000: MEM_MODEL read_en addr=1031 -> sampled=0x5a5a0007
+# 485000: DMA BUSY state remain=9 fifo_count=4 read_index=1032 write_index=2056 fifo_head=3 fifo_tail=0
+# 485000: DMA stall - FIFO full: remain=9 fifo_count=4
+# 495000: DMA BUSY state remain=9 fifo_count=4 read_index=1032 write_index=2056 fifo_head=3 fifo_tail=0
+# 495000: DMA capture data=0x5a5a0007 for pending_write_addr=2055 (mem_read_valid)
+# 495000: DMA write addr=2055 data=0x5a5a0007 remain=9 (using pending_write_fifo)
+# 495000: DMA stall - FIFO full: remain=9 fifo_count=4
+# 505000: MEM_MODEL write addr=2055 data=0x5a5a0007
+# 505000: DMA BUSY state remain=8 fifo_count=3 read_index=1032 write_index=2056 fifo_head=0 fifo_tail=0
+# 505000: DMA issue read addr=1032 pending_fifo_tail=0 remain=8
+# 515000: MEM_MODEL read_en addr=1032 -> sampled=0x5a5a0008
+# 515000: DMA BUSY state remain=8 fifo_count=4 read_index=1033 write_index=2057 fifo_head=0 fifo_tail=1
+# 515000: DMA stall - FIFO full: remain=8 fifo_count=4
+# 525000: DMA BUSY state remain=8 fifo_count=4 read_index=1033 write_index=2057 fifo_head=0 fifo_tail=1
+# 525000: DMA capture data=0x5a5a0008 for pending_write_addr=2056 (mem_read_valid)
+# 525000: DMA write addr=2056 data=0x5a5a0008 remain=8 (using pending_write_fifo)
+# 525000: DMA stall - FIFO full: remain=8 fifo_count=4
+# 535000: MEM_MODEL write addr=2056 data=0x5a5a0008
+# 535000: DMA BUSY state remain=7 fifo_count=3 read_index=1033 write_index=2057 fifo_head=1 fifo_tail=1
+# 535000: DMA issue read addr=1033 pending_fifo_tail=1 remain=7
+# 545000: MEM_MODEL read_en addr=1033 -> sampled=0x5a5a0009
+# 545000: DMA BUSY state remain=7 fifo_count=4 read_index=1034 write_index=2058 fifo_head=1 fifo_tail=2
+# 545000: DMA stall - FIFO full: remain=7 fifo_count=4
+# 555000: DMA BUSY state remain=7 fifo_count=4 read_index=1034 write_index=2058 fifo_head=1 fifo_tail=2
+# 555000: DMA capture data=0x5a5a0009 for pending_write_addr=2057 (mem_read_valid)
+# 555000: DMA write addr=2057 data=0x5a5a0009 remain=7 (using pending_write_fifo)
+# 555000: DMA stall - FIFO full: remain=7 fifo_count=4
+# 565000: MEM_MODEL write addr=2057 data=0x5a5a0009
+# 565000: DMA BUSY state remain=6 fifo_count=3 read_index=1034 write_index=2058 fifo_head=2 fifo_tail=2
+# 565000: DMA issue read addr=1034 pending_fifo_tail=2 remain=6
+# 575000: MEM_MODEL read_en addr=1034 -> sampled=0x5a5a000a
+# 575000: DMA BUSY state remain=6 fifo_count=4 read_index=1035 write_index=2059 fifo_head=2 fifo_tail=3
+# 575000: DMA stall - FIFO full: remain=6 fifo_count=4
+# 585000: DMA BUSY state remain=6 fifo_count=4 read_index=1035 write_index=2059 fifo_head=2 fifo_tail=3
+# 585000: DMA capture data=0x5a5a000a for pending_write_addr=2058 (mem_read_valid)
+# 585000: DMA write addr=2058 data=0x5a5a000a remain=6 (using pending_write_fifo)
+# 585000: DMA stall - FIFO full: remain=6 fifo_count=4
+# 595000: MEM_MODEL write addr=2058 data=0x5a5a000a
+# 595000: DMA BUSY state remain=5 fifo_count=3 read_index=1035 write_index=2059 fifo_head=3 fifo_tail=3
+# 595000: DMA issue read addr=1035 pending_fifo_tail=3 remain=5
+# 605000: MEM_MODEL read_en addr=1035 -> sampled=0x5a5a000b
+# 605000: DMA BUSY state remain=5 fifo_count=4 read_index=1036 write_index=2060 fifo_head=3 fifo_tail=0
+# 605000: DMA stall - FIFO full: remain=5 fifo_count=4
+# 615000: DMA BUSY state remain=5 fifo_count=4 read_index=1036 write_index=2060 fifo_head=3 fifo_tail=0
+# 615000: DMA capture data=0x5a5a000b for pending_write_addr=2059 (mem_read_valid)
+# 615000: DMA write addr=2059 data=0x5a5a000b remain=5 (using pending_write_fifo)
+# 615000: DMA stall - FIFO full: remain=5 fifo_count=4
+# 625000: MEM_MODEL write addr=2059 data=0x5a5a000b
+# 625000: DMA BUSY state remain=4 fifo_count=3 read_index=1036 write_index=2060 fifo_head=0 fifo_tail=0
+# 625000: DMA issue read addr=1036 pending_fifo_tail=0 remain=4
+# 635000: MEM_MODEL read_en addr=1036 -> sampled=0x5a5a000c
+# 635000: DMA BUSY state remain=4 fifo_count=4 read_index=1037 write_index=2061 fifo_head=0 fifo_tail=1
+# 635000: DMA stall - FIFO full: remain=4 fifo_count=4
+# 645000: DMA BUSY state remain=4 fifo_count=4 read_index=1037 write_index=2061 fifo_head=0 fifo_tail=1
+# 645000: DMA capture data=0x5a5a000c for pending_write_addr=2060 (mem_read_valid)
+# 645000: DMA write addr=2060 data=0x5a5a000c remain=4 (using pending_write_fifo)
+# 645000: DMA stall - FIFO full: remain=4 fifo_count=4
+# 655000: MEM_MODEL write addr=2060 data=0x5a5a000c
+# 655000: DMA BUSY state remain=3 fifo_count=3 read_index=1037 write_index=2061 fifo_head=1 fifo_tail=1
+# 655000: DMA issue read addr=1037 pending_fifo_tail=1 remain=3
+# 665000: MEM_MODEL read_en addr=1037 -> sampled=0x5a5a000d
+# 665000: DMA BUSY state remain=3 fifo_count=4 read_index=1038 write_index=2062 fifo_head=1 fifo_tail=2
+# 665000: DMA stall - FIFO full: remain=3 fifo_count=4
+# 675000: DMA BUSY state remain=3 fifo_count=4 read_index=1038 write_index=2062 fifo_head=1 fifo_tail=2
+# 675000: DMA capture data=0x5a5a000d for pending_write_addr=2061 (mem_read_valid)
+# 675000: DMA write addr=2061 data=0x5a5a000d remain=3 (using pending_write_fifo)
+# 675000: DMA stall - FIFO full: remain=3 fifo_count=4
+# 685000: MEM_MODEL write addr=2061 data=0x5a5a000d
+# 685000: DMA BUSY state remain=2 fifo_count=3 read_index=1038 write_index=2062 fifo_head=2 fifo_tail=2
+# 685000: DMA issue read addr=1038 pending_fifo_tail=2 remain=2
+# 695000: MEM_MODEL read_en addr=1038 -> sampled=0x5a5a000e
+# 695000: DMA BUSY state remain=2 fifo_count=4 read_index=1039 write_index=2063 fifo_head=2 fifo_tail=3
+# 695000: DMA stall - FIFO full: remain=2 fifo_count=4
+# 705000: DMA BUSY state remain=2 fifo_count=4 read_index=1039 write_index=2063 fifo_head=2 fifo_tail=3
+# 705000: DMA capture data=0x5a5a000e for pending_write_addr=2062 (mem_read_valid)
+# 705000: DMA write addr=2062 data=0x5a5a000e remain=2 (using pending_write_fifo)
+# 705000: DMA stall - FIFO full: remain=2 fifo_count=4
+# 715000: MEM_MODEL write addr=2062 data=0x5a5a000e
+# 715000: DMA BUSY state remain=1 fifo_count=3 read_index=1039 write_index=2063 fifo_head=3 fifo_tail=3
+# 715000: DMA issue read addr=1039 pending_fifo_tail=3 remain=1
+# 725000: MEM_MODEL read_en addr=1039 -> sampled=0x5a5a000f
+# 725000: DMA BUSY state remain=1 fifo_count=4 read_index=1040 write_index=2064 fifo_head=3 fifo_tail=0
+# 725000: DMA stall - FIFO full: remain=1 fifo_count=4
+# 735000: DMA BUSY state remain=1 fifo_count=4 read_index=1040 write_index=2064 fifo_head=3 fifo_tail=0
+# 735000: DMA capture data=0x5a5a000f for pending_write_addr=2063 (mem_read_valid)
+# 735000: DMA write addr=2063 data=0x5a5a000f remain=1 (using pending_write_fifo)
+# 735000: DMA stall - FIFO full: remain=1 fifo_count=4
+# 745000: MEM_MODEL write addr=2063 data=0x5a5a000f
 # CASE PASS: src=0x00001000 dst=0x00002000 words=16
+# TOP: cfg write SRC_LO=0x00001000 at 795000
+# TOP: cfg write SRC_HI=0x00000000 at 815000
+# TOP: cfg write DST_LO=0x00002000 at 835000
+# TOP: cfg write DST_HI=0x00000000 at 855000
+# TOP: cfg write LEN=0x00000000 at 875000
+# TB: program start src=0x00001000 dst=0x00002000 words=0
+# TOP: cfg write START=1 at 895000
+# 905000: DMA sampled start=1 state=0 src_res=1 dst_res=1
+# 905000: DMA IDLE saw start src_addr=0x00001000 dst_addr=0x00002000 len=0 desc_mode=x
+# TOP: cfg write START=1 at 915000
+# 925000: DMA sampled start=1 state=0 src_res=1 dst_res=1
+# 925000: DMA IDLE saw start src_addr=0x00001000 dst_addr=0x00002000 len=0 desc_mode=x
 # CASE PASS: src=0x00001000 dst=0x00002000 words=0
-# 1275000: DMA issue read addr=1025 pending_write_addr=2063 remain=1
-# CASE FAIL: src=0x00001004 dst=0x00002008 words=1 mismatch at 0: got 0x00000000 exp 0x5a5a0000
-# 1285000: MEM_MODEL read_en addr=1025 -> sampled=0x5a5a0000
-# 1295000: DMA capture data=0x5a5a0000 for pending_write_addr=2050 (mem_read_valid)
-# 1305000: DMA write addr=2050 data=0x5a5a0000 remain=1 (using pending_write_addr)
-# 1315000: MEM_MODEL write addr=2050 data=0x5a5a0000
-# 1415000: DMA issue read addr=1088 pending_write_addr=2050 remain=8
-# CASE FAIL: src=0x00001103 dst=0x00002107 words=8 mismatch at 0: got 0x00000000 exp 0x5a5a0000
-# 1425000: MEM_MODEL read_en addr=1088 -> sampled=0x5a5a0000
-# 1435000: DMA capture data=0x5a5a0000 for pending_write_addr=2113 (mem_read_valid)
-# 1445000: DMA write addr=2113 data=0x5a5a0000 remain=8 (using pending_write_addr)
-# 1455000: MEM_MODEL write addr=2113 data=0x5a5a0000
-# 1455000: DMA issue read addr=1089 pending_write_addr=2113 remain=7
-# 1465000: MEM_MODEL read_en addr=1089 -> sampled=0x5a5a0001
-# 1475000: DMA capture data=0x5a5a0001 for pending_write_addr=2114 (mem_read_valid)
-# 1485000: DMA write addr=2114 data=0x5a5a0001 remain=7 (using pending_write_addr)
-# 1495000: MEM_MODEL write addr=2114 data=0x5a5a0001
-# 1495000: DMA issue read addr=1090 pending_write_addr=2114 remain=6
-# 1505000: MEM_MODEL read_en addr=1090 -> sampled=0x5a5a0002
-# 1515000: DMA capture data=0x5a5a0002 for pending_write_addr=2115 (mem_read_valid)
-# 1525000: DMA write addr=2115 data=0x5a5a0002 remain=6 (using pending_write_addr)
-# 1535000: MEM_MODEL write addr=2115 data=0x5a5a0002
-# 1535000: DMA issue read addr=1091 pending_write_addr=2115 remain=5
-# CONCURRENT CASE FAIL: mismatch at 0: got 0x00000000 expected 0xc3c30000
-# 1545000: MEM_MODEL read_en addr=1091 -> sampled=0x5a5a0003
-# 1555000: DMA capture data=0x5a5a0003 for pending_write_addr=2116 (mem_read_valid)
-# 1565000: DMA write addr=2116 data=0x5a5a0003 remain=5 (using pending_write_addr)
-# 1575000: MEM_MODEL write addr=2116 data=0x5a5a0003
-# 1575000: DMA issue read addr=1092 pending_write_addr=2116 remain=4
-# 1585000: MEM_MODEL read_en addr=1092 -> sampled=0x5a5a0004
-# 1595000: DMA capture data=0x5a5a0004 for pending_write_addr=2117 (mem_read_valid)
-# 1605000: DMA write addr=2117 data=0x5a5a0004 remain=4 (using pending_write_addr)
-# 1615000: MEM_MODEL write addr=2117 data=0x5a5a0004
-# 1615000: DMA issue read addr=1093 pending_write_addr=2117 remain=3
-# 1625000: MEM_MODEL read_en addr=1093 -> sampled=0x5a5a0005
-# 1635000: DMA capture data=0x5a5a0005 for pending_write_addr=2118 (mem_read_valid)
-# 1645000: DMA write addr=2118 data=0x5a5a0005 remain=3 (using pending_write_addr)
-# 1655000: MEM_MODEL write addr=2118 data=0x5a5a0005
-# 1655000: DMA issue read addr=1094 pending_write_addr=2118 remain=2
-# 1665000: MEM_MODEL read_en addr=1094 -> sampled=0x5a5a0006
-# 1675000: DMA capture data=0x5a5a0006 for pending_write_addr=2119 (mem_read_valid)
-# CASE FAIL: src=0x000002f4 dst=0x00002c70 words=29 mismatch at 0: got 0x00000000 exp 0x5a5a0000
-# 1685000: DMA write addr=2119 data=0x5a5a0006 remain=2 (using pending_write_addr)
-# 1695000: MEM_MODEL write addr=2119 data=0x5a5a0006
-# 1695000: DMA issue read addr=1095 pending_write_addr=2119 remain=1
-# 1705000: MEM_MODEL read_en addr=1095 -> sampled=0x5a5a0007
-# 1715000: DMA capture data=0x5a5a0007 for pending_write_addr=2120 (mem_read_valid)
-# 1725000: DMA write addr=2120 data=0x5a5a0007 remain=1 (using pending_write_addr)
-# 1735000: MEM_MODEL write addr=2120 data=0x5a5a0007
-# 1815000: DMA issue read addr=49 pending_write_addr=2120 remain=40
-# CASE FAIL: src=0x000000c4 dst=0x000023e0 words=40 mismatch at 0: got 0x00000000 exp 0x5a5a0000
-# 1825000: MEM_MODEL read_en addr=49 -> sampled=0x5a5a0000
-# 1835000: DMA capture data=0x5a5a0000 for pending_write_addr=2296 (mem_read_valid)
-# 1845000: DMA write addr=2296 data=0x5a5a0000 remain=40 (using pending_write_addr)
-# 1855000: MEM_MODEL write addr=2296 data=0x5a5a0000
-# 1855000: DMA issue read addr=50 pending_write_addr=2296 remain=39
-# 1865000: MEM_MODEL read_en addr=50 -> sampled=0x5a5a0001
-# 1875000: DMA capture data=0x5a5a0001 for pending_write_addr=2297 (mem_read_valid)
-# 1885000: DMA write addr=2297 data=0x5a5a0001 remain=39 (using pending_write_addr)
-# 1895000: MEM_MODEL write addr=2297 data=0x5a5a0001
-# 1895000: DMA issue read addr=51 pending_write_addr=2297 remain=38
-# 1905000: MEM_MODEL read_en addr=51 -> sampled=0x5a5a0002
-# 1915000: DMA capture data=0x5a5a0002 for pending_write_addr=2298 (mem_read_valid)
-# 1925000: DMA write addr=2298 data=0x5a5a0002 remain=38 (using pending_write_addr)
-# 1935000: MEM_MODEL write addr=2298 data=0x5a5a0002
-# 1935000: DMA issue read addr=52 pending_write_addr=2298 remain=37
-# 1945000: MEM_MODEL read_en addr=52 -> sampled=0x5a5a0003
-# 1955000: DMA capture data=0x5a5a0003 for pending_write_addr=2299 (mem_read_valid)
-# CASE FAIL: src=0x00000870 dst=0x00002dc8 words=1 mismatch at 0: got 0x00000000 exp 0x5a5a0000
-# 1965000: DMA write addr=2299 data=0x5a5a0003 remain=37 (using pending_write_addr)
-# 1975000: MEM_MODEL write addr=2299 data=0x5a5a0003
-# 1975000: DMA issue read addr=53 pending_write_addr=2299 remain=36
-# 1985000: MEM_MODEL read_en addr=53 -> sampled=0x5a5a0004
-# 1995000: DMA capture data=0x5a5a0004 for pending_write_addr=2300 (mem_read_valid)
-# 2005000: DMA write addr=2300 data=0x5a5a0004 remain=36 (using pending_write_addr)
-# 2015000: MEM_MODEL write addr=2300 data=0x5a5a0004
-# 2015000: DMA issue read addr=54 pending_write_addr=2300 remain=35
-# 2025000: MEM_MODEL read_en addr=54 -> sampled=0x5a5a0005
-# 2035000: DMA capture data=0x5a5a0005 for pending_write_addr=2301 (mem_read_valid)
-# 2045000: DMA write addr=2301 data=0x5a5a0005 remain=35 (using pending_write_addr)
-# 2055000: MEM_MODEL write addr=2301 data=0x5a5a0005
-# 2055000: DMA issue read addr=55 pending_write_addr=2301 remain=34
-# 2065000: MEM_MODEL read_en addr=55 -> sampled=0x5a5a0006
-# 2075000: DMA capture data=0x5a5a0006 for pending_write_addr=2302 (mem_read_valid)
-# 2085000: DMA write addr=2302 data=0x5a5a0006 remain=34 (using pending_write_addr)
-# 2095000: MEM_MODEL write addr=2302 data=0x5a5a0006
-# 2095000: DMA issue read addr=56 pending_write_addr=2302 remain=33
-# CASE FAIL: src=0x00000d94 dst=0x000029a4 words=60 mismatch at 0: got 0x00000000 exp 0x5a5a0000
-# 2105000: MEM_MODEL read_en addr=56 -> sampled=0x5a5a0007
-# 2115000: DMA capture data=0x5a5a0007 for pending_write_addr=2303 (mem_read_valid)
-# 2125000: DMA write addr=2303 data=0x5a5a0007 remain=33 (using pending_write_addr)
-# 2135000: MEM_MODEL write addr=2303 data=0x5a5a0007
-# 2135000: DMA issue read addr=57 pending_write_addr=2303 remain=32
-# 2145000: MEM_MODEL read_en addr=57 -> sampled=0x5a5a0008
-# 2155000: DMA capture data=0x5a5a0008 for pending_write_addr=2304 (mem_read_valid)
-# 2165000: DMA write addr=2304 data=0x5a5a0008 remain=32 (using pending_write_addr)
-# 2175000: MEM_MODEL write addr=2304 data=0x5a5a0008
-# 2175000: DMA issue read addr=58 pending_write_addr=2304 remain=31
-# 2185000: MEM_MODEL read_en addr=58 -> sampled=0x5a5a0009
-# 2195000: DMA capture data=0x5a5a0009 for pending_write_addr=2305 (mem_read_valid)
-# 2205000: DMA write addr=2305 data=0x5a5a0009 remain=31 (using pending_write_addr)
-# 2215000: MEM_MODEL write addr=2305 data=0x5a5a0009
-# 2215000: DMA issue read addr=59 pending_write_addr=2305 remain=30
-# 2225000: MEM_MODEL read_en addr=59 -> sampled=0x5a5a000a
-# 2235000: DMA capture data=0x5a5a000a for pending_write_addr=2306 (mem_read_valid)
-# CASE FAIL: src=0x0000014c dst=0x00002234 words=61 mismatch at 0: got 0x00000000 exp 0x5a5a0000
-# 2245000: DMA write addr=2306 data=0x5a5a000a remain=30 (using pending_write_addr)
-# 2255000: MEM_MODEL write addr=2306 data=0x5a5a000a
-# 2255000: DMA issue read addr=60 pending_write_addr=2306 remain=29
-# 2265000: MEM_MODEL read_en addr=60 -> sampled=0x5a5a000b
-# 2275000: DMA capture data=0x5a5a000b for pending_write_addr=2307 (mem_read_valid)
-# 2285000: DMA write addr=2307 data=0x5a5a000b remain=29 (using pending_write_addr)
-# 2295000: MEM_MODEL write addr=2307 data=0x5a5a000b
-# 2295000: DMA issue read addr=61 pending_write_addr=2307 remain=28
-# 2305000: MEM_MODEL read_en addr=61 -> sampled=0x5a5a000c
-# 2315000: DMA capture data=0x5a5a000c for pending_write_addr=2308 (mem_read_valid)
-# 2325000: DMA write addr=2308 data=0x5a5a000c remain=28 (using pending_write_addr)
-# 2335000: MEM_MODEL write addr=2308 data=0x5a5a000c
-# 2335000: DMA issue read addr=62 pending_write_addr=2308 remain=27
-# 2345000: MEM_MODEL read_en addr=62 -> sampled=0x5a5a000d
-# 2355000: DMA capture data=0x5a5a000d for pending_write_addr=2309 (mem_read_valid)
-# 2365000: DMA write addr=2309 data=0x5a5a000d remain=27 (using pending_write_addr)
-# 2375000: MEM_MODEL write addr=2309 data=0x5a5a000d
-# 2375000: DMA issue read addr=63 pending_write_addr=2309 remain=26
-# CASE FAIL: src=0x00000668 dst=0x00002c64 words=23 mismatch at 0: got 0x00000000 exp 0x5a5a0000
-# 2385000: MEM_MODEL read_en addr=63 -> sampled=0x5a5a000e
-# 2395000: DMA capture data=0x5a5a000e for pending_write_addr=2310 (mem_read_valid)
-# 2405000: DMA write addr=2310 data=0x5a5a000e remain=26 (using pending_write_addr)
-# 2415000: MEM_MODEL write addr=2310 data=0x5a5a000e
-# 2415000: DMA issue read addr=64 pending_write_addr=2310 remain=25
-# 2425000: MEM_MODEL read_en addr=64 -> sampled=0x5a5a000f
-# 2435000: DMA capture data=0x5a5a000f for pending_write_addr=2311 (mem_read_valid)
-# 2445000: DMA write addr=2311 data=0x5a5a000f remain=25 (using pending_write_addr)
-# 2455000: MEM_MODEL write addr=2311 data=0x5a5a000f
-# 2455000: DMA issue read addr=65 pending_write_addr=2311 remain=24
-# 2465000: MEM_MODEL read_en addr=65 -> sampled=0x5a5a0010
-# 2475000: DMA capture data=0x5a5a0010 for pending_write_addr=2312 (mem_read_valid)
-# 2485000: DMA write addr=2312 data=0x5a5a0010 remain=24 (using pending_write_addr)
-# 2495000: MEM_MODEL write addr=2312 data=0x5a5a0010
-# 2495000: DMA issue read addr=66 pending_write_addr=2312 remain=23
-# 2505000: MEM_MODEL read_en addr=66 -> sampled=0x5a5a0011
-# 2515000: DMA capture data=0x5a5a0011 for pending_write_addr=2313 (mem_read_valid)
-# CASE FAIL: src=0x00000a64 dst=0x00002c78 words=31 mismatch at 0: got 0x00000000 exp 0x5a5a0000
-# 2525000: DMA write addr=2313 data=0x5a5a0011 remain=23 (using pending_write_addr)
-# 2535000: MEM_MODEL write addr=2313 data=0x5a5a0011
-# 2535000: DMA issue read addr=67 pending_write_addr=2313 remain=22
-# 2545000: MEM_MODEL read_en addr=67 -> sampled=0x5a5a0012
-# 2555000: DMA capture data=0x5a5a0012 for pending_write_addr=2314 (mem_read_valid)
-# 2565000: DMA write addr=2314 data=0x5a5a0012 remain=22 (using pending_write_addr)
-# 2575000: MEM_MODEL write addr=2314 data=0x5a5a0012
-# 2575000: DMA issue read addr=68 pending_write_addr=2314 remain=21
-# 2585000: MEM_MODEL read_en addr=68 -> sampled=0x5a5a0013
-# 2595000: DMA capture data=0x5a5a0013 for pending_write_addr=2315 (mem_read_valid)
-# 2605000: DMA write addr=2315 data=0x5a5a0013 remain=21 (using pending_write_addr)
-# 2615000: MEM_MODEL write addr=2315 data=0x5a5a0013
-# 2615000: DMA issue read addr=69 pending_write_addr=2315 remain=20
-# 2625000: MEM_MODEL read_en addr=69 -> sampled=0x5a5a0014
-# 2635000: DMA capture data=0x5a5a0014 for pending_write_addr=2316 (mem_read_valid)
-# 2645000: DMA write addr=2316 data=0x5a5a0014 remain=20 (using pending_write_addr)
-# 2655000: MEM_MODEL write addr=2316 data=0x5a5a0014
-# 2655000: DMA issue read addr=70 pending_write_addr=2316 remain=19
-# CASE FAIL: src=0x00000484 dst=0x00002400 words=21 mismatch at 0: got 0x00000000 exp 0x5a5a0000
-# 2665000: MEM_MODEL read_en addr=70 -> sampled=0x5a5a0015
-# 2675000: DMA capture data=0x5a5a0015 for pending_write_addr=2317 (mem_read_valid)
-# 2685000: DMA write addr=2317 data=0x5a5a0015 remain=19 (using pending_write_addr)
-# 2695000: MEM_MODEL write addr=2317 data=0x5a5a0015
-# 2695000: DMA issue read addr=71 pending_write_addr=2317 remain=18
-# 2705000: MEM_MODEL read_en addr=71 -> sampled=0x5a5a0016
-# 2715000: DMA capture data=0x5a5a0016 for pending_write_addr=2318 (mem_read_valid)
-# 2725000: DMA write addr=2318 data=0x5a5a0016 remain=18 (using pending_write_addr)
-# 2735000: MEM_MODEL write addr=2318 data=0x5a5a0016
-# 2735000: DMA issue read addr=72 pending_write_addr=2318 remain=17
-# 2745000: MEM_MODEL read_en addr=72 -> sampled=0x5a5a0017
-# 2755000: DMA capture data=0x5a5a0017 for pending_write_addr=2319 (mem_read_valid)
-# 2765000: DMA write addr=2319 data=0x5a5a0017 remain=17 (using pending_write_addr)
-# 2775000: MEM_MODEL write addr=2319 data=0x5a5a0017
-# 2775000: DMA issue read addr=73 pending_write_addr=2319 remain=16
-# 2785000: MEM_MODEL read_en addr=73 -> sampled=0x5a5a0018
-# 2795000: DMA capture data=0x5a5a0018 for pending_write_addr=2320 (mem_read_valid)
-# CASE FAIL: src=0x00000a70 dst=0x00002c10 words=16 mismatch at 0: got 0x00000000 exp 0x5a5a0000
-# 2805000: DMA write addr=2320 data=0x5a5a0018 remain=16 (using pending_write_addr)
-# 2815000: MEM_MODEL write addr=2320 data=0x5a5a0018
-# 2815000: DMA issue read addr=74 pending_write_addr=2320 remain=15
-# 2825000: MEM_MODEL read_en addr=74 -> sampled=0x5a5a0019
-# 2835000: DMA capture data=0x5a5a0019 for pending_write_addr=2321 (mem_read_valid)
-# 2845000: DMA write addr=2321 data=0x5a5a0019 remain=15 (using pending_write_addr)
-# 2855000: MEM_MODEL write addr=2321 data=0x5a5a0019
-# 2855000: DMA issue read addr=75 pending_write_addr=2321 remain=14
-# 2865000: MEM_MODEL read_en addr=75 -> sampled=0x5a5a001a
-# 2875000: DMA capture data=0x5a5a001a for pending_write_addr=2322 (mem_read_valid)
-# 2885000: DMA write addr=2322 data=0x5a5a001a remain=14 (using pending_write_addr)
-# 2895000: MEM_MODEL write addr=2322 data=0x5a5a001a
-# 2895000: DMA issue read addr=76 pending_write_addr=2322 remain=13
-# 2905000: MEM_MODEL read_en addr=76 -> sampled=0x5a5a001b
-# 2915000: DMA capture data=0x5a5a001b for pending_write_addr=2323 (mem_read_valid)
-# 2925000: DMA write addr=2323 data=0x5a5a001b remain=13 (using pending_write_addr)
-# 2935000: MEM_MODEL write addr=2323 data=0x5a5a001b
-# 2935000: DMA issue read addr=77 pending_write_addr=2323 remain=12
-# CASE FAIL: src=0x00000d18 dst=0x00002834 words=64 mismatch at 0: got 0x00000000 exp 0x5a5a0000
-# TEST SUMMARY: passed=2 failed=13
-# ** Fatal: Assertion error.
-#    Time: 2935 ns  Scope: tb_top File: C:/Users/waric/Documents/gpu/sim/tb_top.sv Line: 220
-# ** Note: $finish    : C:/Users/waric/Documents/gpu/sim/tb_top.sv(220)
-#    Time: 2935 ns  Iteration: 1  Instance: /tb_top
-# End time: 23:45:11 on Nov 21,2025, Elapsed time: 0:00:01
-# Errors: 1, Warnings: 0
+# TOP: cfg write SRC_LO=0x00001004 at 985000
+# TOP: cfg write SRC_HI=0x00000000 at 1005000
+# TOP: cfg write DST_LO=0x00002008 at 1025000
+# TOP: cfg write DST_HI=0x00000000 at 1045000
+# TOP: cfg write LEN=0x00000001 at 1065000
+# TB: program start src=0x00001004 dst=0x00002008 words=1
+# TOP: cfg write START=1 at 1085000
+# 1095000: DMA sampled start=1 state=0 src_res=1 dst_res=1
+# 1095000: DMA IDLE saw start src_addr=0x00001004 dst_addr=0x00002008 len=1 desc_mode=x
+# TOP: cfg write START=1 at 1105000
+# 1105000: DMA BUSY state remain=1 fifo_count=0 read_index=1025 write_index=2050 fifo_head=0 fifo_tail=0
+# 1105000: DMA issue read addr=1025 pending_fifo_tail=0 remain=1
+# 1115000: MEM_MODEL read_en addr=1025 -> sampled=0x5a5a0000
+# 1115000: DMA sampled start=1 state=2 src_res=1 dst_res=1
+# 1115000: DMA BUSY state remain=1 fifo_count=1 read_index=1026 write_index=2051 fifo_head=0 fifo_tail=1
+# 1115000: DMA issue read addr=1026 pending_fifo_tail=1 remain=1
+# 1125000: MEM_MODEL read_en addr=1026 -> sampled=0x5a5a0002
+# 1125000: DMA BUSY state remain=1 fifo_count=2 read_index=1027 write_index=2052 fifo_head=0 fifo_tail=2
+# 1125000: DMA capture data=0x5a5a0000 for pending_write_addr=2050 (mem_read_valid)
+# 1125000: DMA write addr=2050 data=0x5a5a0000 remain=1 (using pending_write_fifo)
+# 1125000: DMA issue read addr=1027 pending_fifo_tail=2 remain=1
+# 1135000: MEM_MODEL write addr=2050 data=0x5a5a0000
+# 1135000: MEM_MODEL read_en addr=1027 -> sampled=0x5a5a0003
+# CASE PASS: src=0x00001004 dst=0x00002008 words=1
+# TOP: cfg write SRC_LO=0x00001103 at 1175000
+# TOP: cfg write SRC_HI=0x00000000 at 1195000
+# TOP: cfg write DST_LO=0x00002107 at 1215000
+# TOP: cfg write DST_HI=0x00000000 at 1235000
+# TOP: cfg write LEN=0x00000008 at 1255000
+# TB: program start src=0x00001103 dst=0x00002107 words=8
+# TOP: cfg write START=1 at 1275000
+# 1285000: DMA sampled start=1 state=0 src_res=1 dst_res=1
+# 1285000: DMA IDLE saw start src_addr=0x00001103 dst_addr=0x00002107 len=8 desc_mode=x
+# TOP: cfg write START=1 at 1295000
+# 1295000: DMA BUSY state remain=8 fifo_count=0 read_index=1088 write_index=2113 fifo_head=0 fifo_tail=0
+# 1295000: DMA issue read addr=1088 pending_fifo_tail=0 remain=8
+# 1305000: MEM_MODEL read_en addr=1088 -> sampled=0x5a5a0000
+# 1305000: DMA sampled start=1 state=2 src_res=1 dst_res=1
+# 1305000: DMA BUSY state remain=8 fifo_count=1 read_index=1089 write_index=2114 fifo_head=0 fifo_tail=1
+# 1305000: DMA issue read addr=1089 pending_fifo_tail=1 remain=8
+# 1315000: MEM_MODEL read_en addr=1089 -> sampled=0x5a5a0001
+# 1315000: DMA BUSY state remain=8 fifo_count=2 read_index=1090 write_index=2115 fifo_head=0 fifo_tail=2
+# 1315000: DMA capture data=0x5a5a0000 for pending_write_addr=2113 (mem_read_valid)
+# 1315000: DMA write addr=2113 data=0x5a5a0000 remain=8 (using pending_write_fifo)
+# 1315000: DMA issue read addr=1090 pending_fifo_tail=2 remain=8
+# 1325000: MEM_MODEL write addr=2113 data=0x5a5a0000
+# 1325000: MEM_MODEL read_en addr=1090 -> sampled=0x5a5a0002
+# 1325000: DMA BUSY state remain=7 fifo_count=3 read_index=1091 write_index=2116 fifo_head=1 fifo_tail=3
+# 1325000: DMA capture data=0x5a5a0001 for pending_write_addr=2114 (mem_read_valid)
+# 1325000: DMA write addr=2114 data=0x5a5a0001 remain=7 (using pending_write_fifo)
+# 1325000: DMA issue read addr=1091 pending_fifo_tail=3 remain=7
+# 1335000: MEM_MODEL write addr=2114 data=0x5a5a0001
+# 1335000: MEM_MODEL read_en addr=1091 -> sampled=0x5a5a0003
+# 1335000: DMA BUSY state remain=6 fifo_count=4 read_index=1092 write_index=2117 fifo_head=2 fifo_tail=0
+# 1335000: DMA capture data=0x5a5a0002 for pending_write_addr=2115 (mem_read_valid)
+# 1335000: DMA write addr=2115 data=0x5a5a0002 remain=6 (using pending_write_fifo)
+# 1335000: DMA stall - FIFO full: remain=6 fifo_count=4
+# 1345000: MEM_MODEL write addr=2115 data=0x5a5a0002
+# 1345000: DMA BUSY state remain=5 fifo_count=3 read_index=1092 write_index=2117 fifo_head=3 fifo_tail=0
+# 1345000: DMA capture data=0x5a5a0003 for pending_write_addr=2116 (mem_read_valid)
+# 1345000: DMA write addr=2116 data=0x5a5a0003 remain=5 (using pending_write_fifo)
+# 1345000: DMA issue read addr=1092 pending_fifo_tail=0 remain=5
+# 1355000: MEM_MODEL write addr=2116 data=0x5a5a0003
+# 1355000: MEM_MODEL read_en addr=1092 -> sampled=0x5a5a0004
+# 1355000: DMA BUSY state remain=4 fifo_count=4 read_index=1093 write_index=2118 fifo_head=0 fifo_tail=1
+# 1355000: DMA stall - FIFO full: remain=4 fifo_count=4
+# 1365000: DMA BUSY state remain=4 fifo_count=4 read_index=1093 write_index=2118 fifo_head=0 fifo_tail=1
+# 1365000: DMA capture data=0x5a5a0004 for pending_write_addr=2117 (mem_read_valid)
+# 1365000: DMA write addr=2117 data=0x5a5a0004 remain=4 (using pending_write_fifo)
+# 1365000: DMA stall - FIFO full: remain=4 fifo_count=4
+# 1375000: MEM_MODEL write addr=2117 data=0x5a5a0004
+# 1375000: DMA BUSY state remain=3 fifo_count=3 read_index=1093 write_index=2118 fifo_head=1 fifo_tail=1
+# 1375000: DMA issue read addr=1093 pending_fifo_tail=1 remain=3
+# 1385000: MEM_MODEL read_en addr=1093 -> sampled=0x5a5a0005
+# 1385000: DMA BUSY state remain=3 fifo_count=4 read_index=1094 write_index=2119 fifo_head=1 fifo_tail=2
+# 1385000: DMA stall - FIFO full: remain=3 fifo_count=4
+# 1395000: DMA BUSY state remain=3 fifo_count=4 read_index=1094 write_index=2119 fifo_head=1 fifo_tail=2
+# 1395000: DMA capture data=0x5a5a0005 for pending_write_addr=2118 (mem_read_valid)
+# 1395000: DMA write addr=2118 data=0x5a5a0005 remain=3 (using pending_write_fifo)
+# 1395000: DMA stall - FIFO full: remain=3 fifo_count=4
+# 1405000: MEM_MODEL write addr=2118 data=0x5a5a0005
+# 1405000: DMA BUSY state remain=2 fifo_count=3 read_index=1094 write_index=2119 fifo_head=2 fifo_tail=2
+# 1405000: DMA issue read addr=1094 pending_fifo_tail=2 remain=2
+# 1415000: MEM_MODEL read_en addr=1094 -> sampled=0x5a5a0006
+# 1415000: DMA BUSY state remain=2 fifo_count=4 read_index=1095 write_index=2120 fifo_head=2 fifo_tail=3
+# 1415000: DMA stall - FIFO full: remain=2 fifo_count=4
+# 1425000: DMA BUSY state remain=2 fifo_count=4 read_index=1095 write_index=2120 fifo_head=2 fifo_tail=3
+# 1425000: DMA capture data=0x5a5a0006 for pending_write_addr=2119 (mem_read_valid)
+# 1425000: DMA write addr=2119 data=0x5a5a0006 remain=2 (using pending_write_fifo)
+# 1425000: DMA stall - FIFO full: remain=2 fifo_count=4
+# 1435000: MEM_MODEL write addr=2119 data=0x5a5a0006
+# 1435000: DMA BUSY state remain=1 fifo_count=3 read_index=1095 write_index=2120 fifo_head=3 fifo_tail=3
+# 1435000: DMA issue read addr=1095 pending_fifo_tail=3 remain=1
+# 1445000: MEM_MODEL read_en addr=1095 -> sampled=0x5a5a0007
+# 1445000: DMA BUSY state remain=1 fifo_count=4 read_index=1096 write_index=2121 fifo_head=3 fifo_tail=0
+# 1445000: DMA stall - FIFO full: remain=1 fifo_count=4
+# 1455000: DMA BUSY state remain=1 fifo_count=4 read_index=1096 write_index=2121 fifo_head=3 fifo_tail=0
+# 1455000: DMA capture data=0x5a5a0007 for pending_write_addr=2120 (mem_read_valid)
+# 1455000: DMA write addr=2120 data=0x5a5a0007 remain=1 (using pending_write_fifo)
+# 1455000: DMA stall - FIFO full: remain=1 fifo_count=4
+# 1465000: MEM_MODEL write addr=2120 data=0x5a5a0007
+# CASE PASS: src=0x00001103 dst=0x00002107 words=8
+# TOP: cfg write SRC_LO=0x00003000 at 1515000
+# TOP: cfg write DST_LO=0x00004000 at 1535000
+# TOP: cfg write LEN=0x00000020 at 1555000
+# TOP: cfg write START=1 at 1575000
+# 1585000: DMA sampled start=1 state=0 src_res=1 dst_res=1
+# 1585000: DMA IDLE saw start src_addr=0x00003000 dst_addr=0x00004000 len=32 desc_mode=x
+# TOP: cfg write START=1 at 1595000
+# 1595000: DMA BUSY state remain=32 fifo_count=0 read_index=3072 write_index=4096 fifo_head=0 fifo_tail=0
+# 1595000: DMA issue read addr=3072 pending_fifo_tail=0 remain=32
+# 1605000: MEM_MODEL read_en addr=3072 -> sampled=0xc3c30000
+# 1605000: DMA sampled start=1 state=2 src_res=1 dst_res=1
+# 1605000: DMA BUSY state remain=32 fifo_count=1 read_index=3073 write_index=4097 fifo_head=0 fifo_tail=1
+# 1605000: DMA issue read addr=3073 pending_fifo_tail=1 remain=32
+# 1615000: MEM_MODEL read_en addr=3073 -> sampled=0xc3c30001
+# 1615000: DMA BUSY state remain=32 fifo_count=2 read_index=3074 write_index=4098 fifo_head=0 fifo_tail=2
+# 1615000: DMA capture data=0xc3c30000 for pending_write_addr=4096 (mem_read_valid)
+# 1615000: DMA write addr=4096 data=0xc3c30000 remain=32 (using pending_write_fifo)
+# 1615000: DMA issue read addr=3074 pending_fifo_tail=2 remain=32
+# 1625000: MEM_MODEL write addr=4096 data=0xc3c30000
+# 1625000: MEM_MODEL read_en addr=3074 -> sampled=0xc3c30002
+# 1625000: DMA BUSY state remain=31 fifo_count=3 read_index=3075 write_index=4099 fifo_head=1 fifo_tail=3
+# 1625000: DMA capture data=0xc3c30001 for pending_write_addr=4097 (mem_read_valid)
+# 1625000: DMA write addr=4097 data=0xc3c30001 remain=31 (using pending_write_fifo)
+# 1625000: DMA issue read addr=3075 pending_fifo_tail=3 remain=31
+# 1635000: MEM_MODEL write addr=4097 data=0xc3c30001
+# 1635000: MEM_MODEL read_en addr=3075 -> sampled=0xc3c30003
+# 1635000: DMA BUSY state remain=30 fifo_count=4 read_index=3076 write_index=4100 fifo_head=2 fifo_tail=0
+# 1635000: DMA capture data=0xc3c30002 for pending_write_addr=4098 (mem_read_valid)
+# 1635000: DMA write addr=4098 data=0xc3c30002 remain=30 (using pending_write_fifo)
+# 1635000: DMA stall - FIFO full: remain=30 fifo_count=4
+# 1645000: MEM_MODEL write addr=4098 data=0xc3c30002
+# 1645000: DMA BUSY state remain=29 fifo_count=3 read_index=3076 write_index=4100 fifo_head=3 fifo_tail=0
+# 1645000: DMA capture data=0xc3c30003 for pending_write_addr=4099 (mem_read_valid)
+# 1645000: DMA write addr=4099 data=0xc3c30003 remain=29 (using pending_write_fifo)
+# 1645000: DMA issue read addr=3076 pending_fifo_tail=0 remain=29
+# 1655000: MEM_MODEL write addr=4099 data=0xc3c30003
+# 1655000: MEM_MODEL read_en addr=3076 -> sampled=0xc3c30004
+# 1655000: DMA BUSY state remain=28 fifo_count=4 read_index=3077 write_index=4101 fifo_head=0 fifo_tail=1
+# 1655000: DMA stall - FIFO full: remain=28 fifo_count=4
+# 1665000: DMA BUSY state remain=28 fifo_count=4 read_index=3077 write_index=4101 fifo_head=0 fifo_tail=1
+# 1665000: DMA capture data=0xc3c30004 for pending_write_addr=4100 (mem_read_valid)
+# 1665000: DMA write addr=4100 data=0xc3c30004 remain=28 (using pending_write_fifo)
+# 1665000: DMA stall - FIFO full: remain=28 fifo_count=4
+# 1675000: MEM_MODEL write addr=4100 data=0xc3c30004
+# 1675000: DMA BUSY state remain=27 fifo_count=3 read_index=3077 write_index=4101 fifo_head=1 fifo_tail=1
+# 1675000: DMA issue read addr=3077 pending_fifo_tail=1 remain=27
+# 1685000: MEM_MODEL read_en addr=3077 -> sampled=0xc3c30005
+# 1685000: DMA BUSY state remain=27 fifo_count=4 read_index=3078 write_index=4102 fifo_head=1 fifo_tail=2
+# 1685000: DMA stall - FIFO full: remain=27 fifo_count=4
+# 1695000: DMA BUSY state remain=27 fifo_count=4 read_index=3078 write_index=4102 fifo_head=1 fifo_tail=2
+# 1695000: DMA capture data=0xc3c30005 for pending_write_addr=4101 (mem_read_valid)
+# 1695000: DMA write addr=4101 data=0xc3c30005 remain=27 (using pending_write_fifo)
+# 1695000: DMA stall - FIFO full: remain=27 fifo_count=4
+# 1705000: MEM_MODEL write addr=4101 data=0xc3c30005
+# 1705000: DMA BUSY state remain=26 fifo_count=3 read_index=3078 write_index=4102 fifo_head=2 fifo_tail=2
+# 1705000: DMA issue read addr=3078 pending_fifo_tail=2 remain=26
+# 1715000: MEM_MODEL read_en addr=3078 -> sampled=0xc3c30006
+# 1715000: DMA BUSY state remain=26 fifo_count=4 read_index=3079 write_index=4103 fifo_head=2 fifo_tail=3
+# 1715000: DMA stall - FIFO full: remain=26 fifo_count=4
+# 1725000: DMA BUSY state remain=26 fifo_count=4 read_index=3079 write_index=4103 fifo_head=2 fifo_tail=3
+# 1725000: DMA capture data=0xc3c30006 for pending_write_addr=4102 (mem_read_valid)
+# 1725000: DMA write addr=4102 data=0xc3c30006 remain=26 (using pending_write_fifo)
+# 1725000: DMA stall - FIFO full: remain=26 fifo_count=4
+# 1735000: MEM_MODEL write addr=4102 data=0xc3c30006
+# 1735000: DMA BUSY state remain=25 fifo_count=3 read_index=3079 write_index=4103 fifo_head=3 fifo_tail=3
+# 1735000: DMA issue read addr=3079 pending_fifo_tail=3 remain=25
+# 1745000: MEM_MODEL read_en addr=3079 -> sampled=0xc3c30007
+# 1745000: DMA BUSY state remain=25 fifo_count=4 read_index=3080 write_index=4104 fifo_head=3 fifo_tail=0
+# 1745000: DMA stall - FIFO full: remain=25 fifo_count=4
+# 1755000: DMA BUSY state remain=25 fifo_count=4 read_index=3080 write_index=4104 fifo_head=3 fifo_tail=0
+# 1755000: DMA capture data=0xc3c30007 for pending_write_addr=4103 (mem_read_valid)
+# 1755000: DMA write addr=4103 data=0xc3c30007 remain=25 (using pending_write_fifo)
+# 1755000: DMA stall - FIFO full: remain=25 fifo_count=4
+# 1765000: MEM_MODEL write addr=4103 data=0xc3c30007
+# 1765000: DMA BUSY state remain=24 fifo_count=3 read_index=3080 write_index=4104 fifo_head=0 fifo_tail=0
+# 1765000: DMA issue read addr=3080 pending_fifo_tail=0 remain=24
+# 1775000: MEM_MODEL read_en addr=3080 -> sampled=0xc3c30008
+# 1775000: DMA BUSY state remain=24 fifo_count=4 read_index=3081 write_index=4105 fifo_head=0 fifo_tail=1
+# 1775000: DMA stall - FIFO full: remain=24 fifo_count=4
+# 1785000: DMA BUSY state remain=24 fifo_count=4 read_index=3081 write_index=4105 fifo_head=0 fifo_tail=1
+# 1785000: DMA capture data=0xc3c30008 for pending_write_addr=4104 (mem_read_valid)
+# 1785000: DMA write addr=4104 data=0xc3c30008 remain=24 (using pending_write_fifo)
+# 1785000: DMA stall - FIFO full: remain=24 fifo_count=4
+# 1795000: MEM_MODEL write addr=4104 data=0xc3c30008
+# 1795000: DMA BUSY state remain=23 fifo_count=3 read_index=3081 write_index=4105 fifo_head=1 fifo_tail=1
+# 1795000: DMA issue read addr=3081 pending_fifo_tail=1 remain=23
+# 1805000: MEM_MODEL read_en addr=3081 -> sampled=0xc3c30009
+# 1805000: DMA BUSY state remain=23 fifo_count=4 read_index=3082 write_index=4106 fifo_head=1 fifo_tail=2
+# 1805000: DMA stall - FIFO full: remain=23 fifo_count=4
+# 1815000: DMA BUSY state remain=23 fifo_count=4 read_index=3082 write_index=4106 fifo_head=1 fifo_tail=2
+# 1815000: DMA capture data=0xc3c30009 for pending_write_addr=4105 (mem_read_valid)
+# 1815000: DMA write addr=4105 data=0xc3c30009 remain=23 (using pending_write_fifo)
+# 1815000: DMA stall - FIFO full: remain=23 fifo_count=4
+# 1825000: MEM_MODEL write addr=4105 data=0xc3c30009
+# 1825000: DMA BUSY state remain=22 fifo_count=3 read_index=3082 write_index=4106 fifo_head=2 fifo_tail=2
+# 1825000: DMA issue read addr=3082 pending_fifo_tail=2 remain=22
+# 1835000: MEM_MODEL read_en addr=3082 -> sampled=0xc3c3000a
+# 1835000: DMA BUSY state remain=22 fifo_count=4 read_index=3083 write_index=4107 fifo_head=2 fifo_tail=3
+# 1835000: DMA stall - FIFO full: remain=22 fifo_count=4
+# 1845000: DMA BUSY state remain=22 fifo_count=4 read_index=3083 write_index=4107 fifo_head=2 fifo_tail=3
+# 1845000: DMA capture data=0xc3c3000a for pending_write_addr=4106 (mem_read_valid)
+# 1845000: DMA write addr=4106 data=0xc3c3000a remain=22 (using pending_write_fifo)
+# 1845000: DMA stall - FIFO full: remain=22 fifo_count=4
+# 1855000: MEM_MODEL write addr=4106 data=0xc3c3000a
+# 1855000: DMA BUSY state remain=21 fifo_count=3 read_index=3083 write_index=4107 fifo_head=3 fifo_tail=3
+# 1855000: DMA issue read addr=3083 pending_fifo_tail=3 remain=21
+# 1865000: MEM_MODEL read_en addr=3083 -> sampled=0xc3c3000b
+# 1865000: DMA BUSY state remain=21 fifo_count=4 read_index=3084 write_index=4108 fifo_head=3 fifo_tail=0
+# 1865000: DMA stall - FIFO full: remain=21 fifo_count=4
+# 1875000: DMA BUSY state remain=21 fifo_count=4 read_index=3084 write_index=4108 fifo_head=3 fifo_tail=0
+# 1875000: DMA capture data=0xc3c3000b for pending_write_addr=4107 (mem_read_valid)
+# 1875000: DMA write addr=4107 data=0xc3c3000b remain=21 (using pending_write_fifo)
+# 1875000: DMA stall - FIFO full: remain=21 fifo_count=4
+# 1885000: MEM_MODEL write addr=4107 data=0xc3c3000b
+# 1885000: DMA BUSY state remain=20 fifo_count=3 read_index=3084 write_index=4108 fifo_head=0 fifo_tail=0
+# 1885000: DMA issue read addr=3084 pending_fifo_tail=0 remain=20
+# 1895000: MEM_MODEL read_en addr=3084 -> sampled=0xc3c3000c
+# 1895000: DMA BUSY state remain=20 fifo_count=4 read_index=3085 write_index=4109 fifo_head=0 fifo_tail=1
+# 1895000: DMA stall - FIFO full: remain=20 fifo_count=4
+# 1905000: DMA BUSY state remain=20 fifo_count=4 read_index=3085 write_index=4109 fifo_head=0 fifo_tail=1
+# 1905000: DMA capture data=0xc3c3000c for pending_write_addr=4108 (mem_read_valid)
+# 1905000: DMA write addr=4108 data=0xc3c3000c remain=20 (using pending_write_fifo)
+# 1905000: DMA stall - FIFO full: remain=20 fifo_count=4
+# 1915000: MEM_MODEL write addr=4108 data=0xc3c3000c
+# 1915000: DMA BUSY state remain=19 fifo_count=3 read_index=3085 write_index=4109 fifo_head=1 fifo_tail=1
+# 1915000: DMA issue read addr=3085 pending_fifo_tail=1 remain=19
+# 1925000: MEM_MODEL read_en addr=3085 -> sampled=0xc3c3000d
+# 1925000: DMA BUSY state remain=19 fifo_count=4 read_index=3086 write_index=4110 fifo_head=1 fifo_tail=2
+# 1925000: DMA stall - FIFO full: remain=19 fifo_count=4
+# 1935000: DMA BUSY state remain=19 fifo_count=4 read_index=3086 write_index=4110 fifo_head=1 fifo_tail=2
+# 1935000: DMA capture data=0xc3c3000d for pending_write_addr=4109 (mem_read_valid)
+# 1935000: DMA write addr=4109 data=0xc3c3000d remain=19 (using pending_write_fifo)
+# 1935000: DMA stall - FIFO full: remain=19 fifo_count=4
+# 1945000: MEM_MODEL write addr=4109 data=0xc3c3000d
+# 1945000: DMA BUSY state remain=18 fifo_count=3 read_index=3086 write_index=4110 fifo_head=2 fifo_tail=2
+# 1945000: DMA issue read addr=3086 pending_fifo_tail=2 remain=18
+# 1955000: MEM_MODEL read_en addr=3086 -> sampled=0xc3c3000e
+# 1955000: DMA BUSY state remain=18 fifo_count=4 read_index=3087 write_index=4111 fifo_head=2 fifo_tail=3
+# 1955000: DMA stall - FIFO full: remain=18 fifo_count=4
+# 1965000: DMA BUSY state remain=18 fifo_count=4 read_index=3087 write_index=4111 fifo_head=2 fifo_tail=3
+# 1965000: DMA capture data=0xc3c3000e for pending_write_addr=4110 (mem_read_valid)
+# 1965000: DMA write addr=4110 data=0xc3c3000e remain=18 (using pending_write_fifo)
+# 1965000: DMA stall - FIFO full: remain=18 fifo_count=4
+# 1975000: MEM_MODEL write addr=4110 data=0xc3c3000e
+# 1975000: DMA BUSY state remain=17 fifo_count=3 read_index=3087 write_index=4111 fifo_head=3 fifo_tail=3
+# 1975000: DMA issue read addr=3087 pending_fifo_tail=3 remain=17
+# 1985000: MEM_MODEL read_en addr=3087 -> sampled=0xc3c3000f
+# 1985000: DMA BUSY state remain=17 fifo_count=4 read_index=3088 write_index=4112 fifo_head=3 fifo_tail=0
+# 1985000: DMA stall - FIFO full: remain=17 fifo_count=4
+# 1995000: DMA BUSY state remain=17 fifo_count=4 read_index=3088 write_index=4112 fifo_head=3 fifo_tail=0
+# 1995000: DMA capture data=0xc3c3000f for pending_write_addr=4111 (mem_read_valid)
+# 1995000: DMA write addr=4111 data=0xc3c3000f remain=17 (using pending_write_fifo)
+# 1995000: DMA stall - FIFO full: remain=17 fifo_count=4
+# 2005000: MEM_MODEL write addr=4111 data=0xc3c3000f
+# 2005000: DMA BUSY state remain=16 fifo_count=3 read_index=3088 write_index=4112 fifo_head=0 fifo_tail=0
+# 2005000: DMA issue read addr=3088 pending_fifo_tail=0 remain=16
+# 2015000: MEM_MODEL read_en addr=3088 -> sampled=0xc3c30010
+# 2015000: DMA BUSY state remain=16 fifo_count=4 read_index=3089 write_index=4113 fifo_head=0 fifo_tail=1
+# 2015000: DMA stall - FIFO full: remain=16 fifo_count=4
+# 2025000: DMA BUSY state remain=16 fifo_count=4 read_index=3089 write_index=4113 fifo_head=0 fifo_tail=1
+# 2025000: DMA capture data=0xc3c30010 for pending_write_addr=4112 (mem_read_valid)
+# 2025000: DMA write addr=4112 data=0xc3c30010 remain=16 (using pending_write_fifo)
+# 2025000: DMA stall - FIFO full: remain=16 fifo_count=4
+# 2035000: MEM_MODEL write addr=4112 data=0xc3c30010
+# 2035000: DMA BUSY state remain=15 fifo_count=3 read_index=3089 write_index=4113 fifo_head=1 fifo_tail=1
+# 2035000: DMA issue read addr=3089 pending_fifo_tail=1 remain=15
+# 2045000: MEM_MODEL read_en addr=3089 -> sampled=0xc3c30011
+# 2045000: DMA BUSY state remain=15 fifo_count=4 read_index=3090 write_index=4114 fifo_head=1 fifo_tail=2
+# 2045000: DMA stall - FIFO full: remain=15 fifo_count=4
+# 2055000: DMA BUSY state remain=15 fifo_count=4 read_index=3090 write_index=4114 fifo_head=1 fifo_tail=2
+# 2055000: DMA capture data=0xc3c30011 for pending_write_addr=4113 (mem_read_valid)
+# 2055000: DMA write addr=4113 data=0xc3c30011 remain=15 (using pending_write_fifo)
+# 2055000: DMA stall - FIFO full: remain=15 fifo_count=4
+# 2065000: MEM_MODEL write addr=4113 data=0xc3c30011
+# 2065000: DMA BUSY state remain=14 fifo_count=3 read_index=3090 write_index=4114 fifo_head=2 fifo_tail=2
+# 2065000: DMA issue read addr=3090 pending_fifo_tail=2 remain=14
+# 2075000: MEM_MODEL read_en addr=3090 -> sampled=0xc3c30012
+# 2075000: DMA BUSY state remain=14 fifo_count=4 read_index=3091 write_index=4115 fifo_head=2 fifo_tail=3
+# 2075000: DMA stall - FIFO full: remain=14 fifo_count=4
+# 2085000: DMA BUSY state remain=14 fifo_count=4 read_index=3091 write_index=4115 fifo_head=2 fifo_tail=3
+# 2085000: DMA capture data=0xc3c30012 for pending_write_addr=4114 (mem_read_valid)
+# 2085000: DMA write addr=4114 data=0xc3c30012 remain=14 (using pending_write_fifo)
+# 2085000: DMA stall - FIFO full: remain=14 fifo_count=4
+# 2095000: MEM_MODEL write addr=4114 data=0xc3c30012
+# 2095000: DMA BUSY state remain=13 fifo_count=3 read_index=3091 write_index=4115 fifo_head=3 fifo_tail=3
+# 2095000: DMA issue read addr=3091 pending_fifo_tail=3 remain=13
+# 2105000: MEM_MODEL read_en addr=3091 -> sampled=0xc3c30013
+# 2105000: DMA BUSY state remain=13 fifo_count=4 read_index=3092 write_index=4116 fifo_head=3 fifo_tail=0
+# 2105000: DMA stall - FIFO full: remain=13 fifo_count=4
+# 2115000: DMA BUSY state remain=13 fifo_count=4 read_index=3092 write_index=4116 fifo_head=3 fifo_tail=0
+# 2115000: DMA capture data=0xc3c30013 for pending_write_addr=4115 (mem_read_valid)
+# 2115000: DMA write addr=4115 data=0xc3c30013 remain=13 (using pending_write_fifo)
+# 2115000: DMA stall - FIFO full: remain=13 fifo_count=4
+# 2125000: MEM_MODEL write addr=4115 data=0xc3c30013
+# 2125000: DMA BUSY state remain=12 fifo_count=3 read_index=3092 write_index=4116 fifo_head=0 fifo_tail=0
+# 2125000: DMA issue read addr=3092 pending_fifo_tail=0 remain=12
+# 2135000: MEM_MODEL read_en addr=3092 -> sampled=0xc3c30014
+# 2135000: DMA BUSY state remain=12 fifo_count=4 read_index=3093 write_index=4117 fifo_head=0 fifo_tail=1
+# 2135000: DMA stall - FIFO full: remain=12 fifo_count=4
+# 2145000: DMA BUSY state remain=12 fifo_count=4 read_index=3093 write_index=4117 fifo_head=0 fifo_tail=1
+# 2145000: DMA capture data=0xc3c30014 for pending_write_addr=4116 (mem_read_valid)
+# 2145000: DMA write addr=4116 data=0xc3c30014 remain=12 (using pending_write_fifo)
+# 2145000: DMA stall - FIFO full: remain=12 fifo_count=4
+# 2155000: MEM_MODEL write addr=4116 data=0xc3c30014
+# 2155000: DMA BUSY state remain=11 fifo_count=3 read_index=3093 write_index=4117 fifo_head=1 fifo_tail=1
+# 2155000: DMA issue read addr=3093 pending_fifo_tail=1 remain=11
+# 2165000: MEM_MODEL read_en addr=3093 -> sampled=0xc3c30015
+# 2165000: DMA BUSY state remain=11 fifo_count=4 read_index=3094 write_index=4118 fifo_head=1 fifo_tail=2
+# 2165000: DMA stall - FIFO full: remain=11 fifo_count=4
+# 2175000: DMA BUSY state remain=11 fifo_count=4 read_index=3094 write_index=4118 fifo_head=1 fifo_tail=2
+# 2175000: DMA capture data=0xc3c30015 for pending_write_addr=4117 (mem_read_valid)
+# 2175000: DMA write addr=4117 data=0xc3c30015 remain=11 (using pending_write_fifo)
+# 2175000: DMA stall - FIFO full: remain=11 fifo_count=4
+# 2185000: MEM_MODEL write addr=4117 data=0xc3c30015
+# 2185000: DMA BUSY state remain=10 fifo_count=3 read_index=3094 write_index=4118 fifo_head=2 fifo_tail=2
+# 2185000: DMA issue read addr=3094 pending_fifo_tail=2 remain=10
+# 2195000: MEM_MODEL read_en addr=3094 -> sampled=0xc3c30016
+# 2195000: DMA BUSY state remain=10 fifo_count=4 read_index=3095 write_index=4119 fifo_head=2 fifo_tail=3
+# 2195000: DMA stall - FIFO full: remain=10 fifo_count=4
+# 2205000: DMA BUSY state remain=10 fifo_count=4 read_index=3095 write_index=4119 fifo_head=2 fifo_tail=3
+# 2205000: DMA capture data=0xc3c30016 for pending_write_addr=4118 (mem_read_valid)
+# 2205000: DMA write addr=4118 data=0xc3c30016 remain=10 (using pending_write_fifo)
+# 2205000: DMA stall - FIFO full: remain=10 fifo_count=4
+# 2215000: MEM_MODEL write addr=4118 data=0xc3c30016
+# 2215000: DMA BUSY state remain=9 fifo_count=3 read_index=3095 write_index=4119 fifo_head=3 fifo_tail=3
+# 2215000: DMA issue read addr=3095 pending_fifo_tail=3 remain=9
+# 2225000: MEM_MODEL read_en addr=3095 -> sampled=0xc3c30017
+# 2225000: DMA BUSY state remain=9 fifo_count=4 read_index=3096 write_index=4120 fifo_head=3 fifo_tail=0
+# 2225000: DMA stall - FIFO full: remain=9 fifo_count=4
+# 2235000: DMA BUSY state remain=9 fifo_count=4 read_index=3096 write_index=4120 fifo_head=3 fifo_tail=0
+# 2235000: DMA capture data=0xc3c30017 for pending_write_addr=4119 (mem_read_valid)
+# 2235000: DMA write addr=4119 data=0xc3c30017 remain=9 (using pending_write_fifo)
+# 2235000: DMA stall - FIFO full: remain=9 fifo_count=4
+# 2245000: MEM_MODEL write addr=4119 data=0xc3c30017
+# 2245000: DMA BUSY state remain=8 fifo_count=3 read_index=3096 write_index=4120 fifo_head=0 fifo_tail=0
+# 2245000: DMA issue read addr=3096 pending_fifo_tail=0 remain=8
+# 2255000: MEM_MODEL read_en addr=3096 -> sampled=0xc3c30018
+# 2255000: DMA BUSY state remain=8 fifo_count=4 read_index=3097 write_index=4121 fifo_head=0 fifo_tail=1
+# 2255000: DMA stall - FIFO full: remain=8 fifo_count=4
+# 2265000: DMA BUSY state remain=8 fifo_count=4 read_index=3097 write_index=4121 fifo_head=0 fifo_tail=1
+# 2265000: DMA capture data=0xc3c30018 for pending_write_addr=4120 (mem_read_valid)
+# 2265000: DMA write addr=4120 data=0xc3c30018 remain=8 (using pending_write_fifo)
+# 2265000: DMA stall - FIFO full: remain=8 fifo_count=4
+# 2275000: MEM_MODEL write addr=4120 data=0xc3c30018
+# 2275000: DMA BUSY state remain=7 fifo_count=3 read_index=3097 write_index=4121 fifo_head=1 fifo_tail=1
+# 2275000: DMA issue read addr=3097 pending_fifo_tail=1 remain=7
+# 2285000: MEM_MODEL read_en addr=3097 -> sampled=0xc3c30019
+# 2285000: DMA BUSY state remain=7 fifo_count=4 read_index=3098 write_index=4122 fifo_head=1 fifo_tail=2
+# 2285000: DMA stall - FIFO full: remain=7 fifo_count=4
+# 2295000: DMA BUSY state remain=7 fifo_count=4 read_index=3098 write_index=4122 fifo_head=1 fifo_tail=2
+# 2295000: DMA capture data=0xc3c30019 for pending_write_addr=4121 (mem_read_valid)
+# 2295000: DMA write addr=4121 data=0xc3c30019 remain=7 (using pending_write_fifo)
+# 2295000: DMA stall - FIFO full: remain=7 fifo_count=4
+# 2305000: MEM_MODEL write addr=4121 data=0xc3c30019
+# 2305000: DMA BUSY state remain=6 fifo_count=3 read_index=3098 write_index=4122 fifo_head=2 fifo_tail=2
+# 2305000: DMA issue read addr=3098 pending_fifo_tail=2 remain=6
+# 2315000: MEM_MODEL read_en addr=3098 -> sampled=0xc3c3001a
+# 2315000: DMA BUSY state remain=6 fifo_count=4 read_index=3099 write_index=4123 fifo_head=2 fifo_tail=3
+# 2315000: DMA stall - FIFO full: remain=6 fifo_count=4
+# 2325000: DMA BUSY state remain=6 fifo_count=4 read_index=3099 write_index=4123 fifo_head=2 fifo_tail=3
+# 2325000: DMA capture data=0xc3c3001a for pending_write_addr=4122 (mem_read_valid)
+# 2325000: DMA write addr=4122 data=0xc3c3001a remain=6 (using pending_write_fifo)
+# 2325000: DMA stall - FIFO full: remain=6 fifo_count=4
+# 2335000: MEM_MODEL write addr=4122 data=0xc3c3001a
+# 2335000: DMA BUSY state remain=5 fifo_count=3 read_index=3099 write_index=4123 fifo_head=3 fifo_tail=3
+# 2335000: DMA issue read addr=3099 pending_fifo_tail=3 remain=5
+# 2345000: MEM_MODEL read_en addr=3099 -> sampled=0xc3c3001b
+# 2345000: DMA BUSY state remain=5 fifo_count=4 read_index=3100 write_index=4124 fifo_head=3 fifo_tail=0
+# 2345000: DMA stall - FIFO full: remain=5 fifo_count=4
+# 2355000: DMA BUSY state remain=5 fifo_count=4 read_index=3100 write_index=4124 fifo_head=3 fifo_tail=0
+# 2355000: DMA capture data=0xc3c3001b for pending_write_addr=4123 (mem_read_valid)
+# 2355000: DMA write addr=4123 data=0xc3c3001b remain=5 (using pending_write_fifo)
+# 2355000: DMA stall - FIFO full: remain=5 fifo_count=4
+# 2365000: MEM_MODEL write addr=4123 data=0xc3c3001b
+# 2365000: DMA BUSY state remain=4 fifo_count=3 read_index=3100 write_index=4124 fifo_head=0 fifo_tail=0
+# 2365000: DMA issue read addr=3100 pending_fifo_tail=0 remain=4
+# 2375000: MEM_MODEL read_en addr=3100 -> sampled=0xc3c3001c
+# 2375000: DMA BUSY state remain=4 fifo_count=4 read_index=3101 write_index=4125 fifo_head=0 fifo_tail=1
+# 2375000: DMA stall - FIFO full: remain=4 fifo_count=4
+# 2385000: DMA BUSY state remain=4 fifo_count=4 read_index=3101 write_index=4125 fifo_head=0 fifo_tail=1
+# 2385000: DMA capture data=0xc3c3001c for pending_write_addr=4124 (mem_read_valid)
+# 2385000: DMA write addr=4124 data=0xc3c3001c remain=4 (using pending_write_fifo)
+# 2385000: DMA stall - FIFO full: remain=4 fifo_count=4
+# 2395000: MEM_MODEL write addr=4124 data=0xc3c3001c
+# 2395000: DMA BUSY state remain=3 fifo_count=3 read_index=3101 write_index=4125 fifo_head=1 fifo_tail=1
+# 2395000: DMA issue read addr=3101 pending_fifo_tail=1 remain=3
+# 2405000: MEM_MODEL read_en addr=3101 -> sampled=0xc3c3001d
+# 2405000: DMA BUSY state remain=3 fifo_count=4 read_index=3102 write_index=4126 fifo_head=1 fifo_tail=2
+# 2405000: DMA stall - FIFO full: remain=3 fifo_count=4
+# 2415000: DMA BUSY state remain=3 fifo_count=4 read_index=3102 write_index=4126 fifo_head=1 fifo_tail=2
+# 2415000: DMA capture data=0xc3c3001d for pending_write_addr=4125 (mem_read_valid)
+# 2415000: DMA write addr=4125 data=0xc3c3001d remain=3 (using pending_write_fifo)
+# 2415000: DMA stall - FIFO full: remain=3 fifo_count=4
+# 2425000: MEM_MODEL write addr=4125 data=0xc3c3001d
+# 2425000: DMA BUSY state remain=2 fifo_count=3 read_index=3102 write_index=4126 fifo_head=2 fifo_tail=2
+# 2425000: DMA issue read addr=3102 pending_fifo_tail=2 remain=2
+# 2435000: MEM_MODEL read_en addr=3102 -> sampled=0xc3c3001e
+# 2435000: DMA BUSY state remain=2 fifo_count=4 read_index=3103 write_index=4127 fifo_head=2 fifo_tail=3
+# 2435000: DMA stall - FIFO full: remain=2 fifo_count=4
+# 2445000: DMA BUSY state remain=2 fifo_count=4 read_index=3103 write_index=4127 fifo_head=2 fifo_tail=3
+# 2445000: DMA capture data=0xc3c3001e for pending_write_addr=4126 (mem_read_valid)
+# 2445000: DMA write addr=4126 data=0xc3c3001e remain=2 (using pending_write_fifo)
+# 2445000: DMA stall - FIFO full: remain=2 fifo_count=4
+# 2455000: MEM_MODEL write addr=4126 data=0xc3c3001e
+# 2455000: DMA BUSY state remain=1 fifo_count=3 read_index=3103 write_index=4127 fifo_head=3 fifo_tail=3
+# 2455000: DMA issue read addr=3103 pending_fifo_tail=3 remain=1
+# 2465000: MEM_MODEL read_en addr=3103 -> sampled=0xc3c3001f
+# 2465000: DMA BUSY state remain=1 fifo_count=4 read_index=3104 write_index=4128 fifo_head=3 fifo_tail=0
+# 2465000: DMA stall - FIFO full: remain=1 fifo_count=4
+# 2475000: DMA BUSY state remain=1 fifo_count=4 read_index=3104 write_index=4128 fifo_head=3 fifo_tail=0
+# 2475000: DMA capture data=0xc3c3001f for pending_write_addr=4127 (mem_read_valid)
+# 2475000: DMA write addr=4127 data=0xc3c3001f remain=1 (using pending_write_fifo)
+# 2475000: DMA stall - FIFO full: remain=1 fifo_count=4
+# 2485000: MEM_MODEL write addr=4127 data=0xc3c3001f
+# CONCURRENT CASE PASS: 32 words
+# TOP: cfg write DESC_PTR=0x00008000 at 2535000
+# TOP: cfg write DESC_MODE=1 at 2555000
+# TOP: cfg write START=1 at 2575000
+# 2585000: DMA sampled start=1 state=0 src_res=1 dst_res=1
+# 2585000: DMA IDLE saw start src_addr=0x00003000 dst_addr=0x00004000 len=32 desc_mode=1
+# TOP: cfg write DESC_MODE=0 at 11475000
+# TOP: cfg write DESC_PTR=0x00000000 at 11495000
+# TOP: cfg write SRC_LO=0x000002f4 at 11515000
+# TOP: cfg write SRC_HI=0x00000000 at 11535000
+# TOP: cfg write DST_LO=0x00002c70 at 11555000
+# TOP: cfg write DST_HI=0x00000000 at 11575000
+# TOP: cfg write LEN=0x0000001d at 11595000
+# TB: program start src=0x000002f4 dst=0x00002c70 words=29
+# TOP: cfg write START=1 at 11615000
+# 11625000: DMA sampled start=1 state=0 src_res=1 dst_res=1
+# 11625000: DMA IDLE saw start src_addr=0x000002f4 dst_addr=0x00002c70 len=29 desc_mode=0
+# TOP: cfg write START=1 at 11635000
+# 11635000: DMA BUSY state remain=29 fifo_count=0 read_index=189 write_index=2844 fifo_head=0 fifo_tail=0
+# 11635000: DMA issue read addr=189 pending_fifo_tail=0 remain=29
+# 11645000: MEM_MODEL read_en addr=189 -> sampled=0x5a5a0000
+# 11645000: DMA sampled start=1 state=2 src_res=1 dst_res=1
+# 11645000: DMA BUSY state remain=29 fifo_count=1 read_index=190 write_index=2845 fifo_head=0 fifo_tail=1
+# 11645000: DMA issue read addr=190 pending_fifo_tail=1 remain=29
+# 11655000: MEM_MODEL read_en addr=190 -> sampled=0x5a5a0001
+# 11655000: DMA BUSY state remain=29 fifo_count=2 read_index=191 write_index=2846 fifo_head=0 fifo_tail=2
+# 11655000: DMA capture data=0x5a5a0000 for pending_write_addr=2844 (mem_read_valid)
+# 11655000: DMA write addr=2844 data=0x5a5a0000 remain=29 (using pending_write_fifo)
+# 11655000: DMA issue read addr=191 pending_fifo_tail=2 remain=29
+# 11665000: MEM_MODEL write addr=2844 data=0x5a5a0000
+# 11665000: MEM_MODEL read_en addr=191 -> sampled=0x5a5a0002
+# 11665000: DMA BUSY state remain=28 fifo_count=3 read_index=192 write_index=2847 fifo_head=1 fifo_tail=3
+# 11665000: DMA capture data=0x5a5a0001 for pending_write_addr=2845 (mem_read_valid)
+# 11665000: DMA write addr=2845 data=0x5a5a0001 remain=28 (using pending_write_fifo)
+# 11665000: DMA issue read addr=192 pending_fifo_tail=3 remain=28
+# 11675000: MEM_MODEL write addr=2845 data=0x5a5a0001
+# 11675000: MEM_MODEL read_en addr=192 -> sampled=0x5a5a0003
+# 11675000: DMA BUSY state remain=27 fifo_count=4 read_index=193 write_index=2848 fifo_head=2 fifo_tail=0
+# 11675000: DMA capture data=0x5a5a0002 for pending_write_addr=2846 (mem_read_valid)
+# 11675000: DMA write addr=2846 data=0x5a5a0002 remain=27 (using pending_write_fifo)
+# 11675000: DMA stall - FIFO full: remain=27 fifo_count=4
+# 11685000: MEM_MODEL write addr=2846 data=0x5a5a0002
+# 11685000: DMA BUSY state remain=26 fifo_count=3 read_index=193 write_index=2848 fifo_head=3 fifo_tail=0
+# 11685000: DMA capture data=0x5a5a0003 for pending_write_addr=2847 (mem_read_valid)
+# 11685000: DMA write addr=2847 data=0x5a5a0003 remain=26 (using pending_write_fifo)
+# 11685000: DMA issue read addr=193 pending_fifo_tail=0 remain=26
+# 11695000: MEM_MODEL write addr=2847 data=0x5a5a0003
+# 11695000: MEM_MODEL read_en addr=193 -> sampled=0x5a5a0004
+# 11695000: DMA BUSY state remain=25 fifo_count=4 read_index=194 write_index=2849 fifo_head=0 fifo_tail=1
+# 11695000: DMA stall - FIFO full: remain=25 fifo_count=4
+# 11705000: DMA BUSY state remain=25 fifo_count=4 read_index=194 write_index=2849 fifo_head=0 fifo_tail=1
+# 11705000: DMA capture data=0x5a5a0004 for pending_write_addr=2848 (mem_read_valid)
+# 11705000: DMA write addr=2848 data=0x5a5a0004 remain=25 (using pending_write_fifo)
+# 11705000: DMA stall - FIFO full: remain=25 fifo_count=4
+# 11715000: MEM_MODEL write addr=2848 data=0x5a5a0004
+# 11715000: DMA BUSY state remain=24 fifo_count=3 read_index=194 write_index=2849 fifo_head=1 fifo_tail=1
+# 11715000: DMA issue read addr=194 pending_fifo_tail=1 remain=24
+# 11725000: MEM_MODEL read_en addr=194 -> sampled=0x5a5a0005
+# 11725000: DMA BUSY state remain=24 fifo_count=4 read_index=195 write_index=2850 fifo_head=1 fifo_tail=2
+# 11725000: DMA stall - FIFO full: remain=24 fifo_count=4
+# 11735000: DMA BUSY state remain=24 fifo_count=4 read_index=195 write_index=2850 fifo_head=1 fifo_tail=2
+# 11735000: DMA capture data=0x5a5a0005 for pending_write_addr=2849 (mem_read_valid)
+# 11735000: DMA write addr=2849 data=0x5a5a0005 remain=24 (using pending_write_fifo)
+# 11735000: DMA stall - FIFO full: remain=24 fifo_count=4
+# 11745000: MEM_MODEL write addr=2849 data=0x5a5a0005
+# 11745000: DMA BUSY state remain=23 fifo_count=3 read_index=195 write_index=2850 fifo_head=2 fifo_tail=2
+# 11745000: DMA issue read addr=195 pending_fifo_tail=2 remain=23
+# 11755000: MEM_MODEL read_en addr=195 -> sampled=0x5a5a0006
+# 11755000: DMA BUSY state remain=23 fifo_count=4 read_index=196 write_index=2851 fifo_head=2 fifo_tail=3
+# 11755000: DMA stall - FIFO full: remain=23 fifo_count=4
+# 11765000: DMA BUSY state remain=23 fifo_count=4 read_index=196 write_index=2851 fifo_head=2 fifo_tail=3
+# 11765000: DMA capture data=0x5a5a0006 for pending_write_addr=2850 (mem_read_valid)
+# 11765000: DMA write addr=2850 data=0x5a5a0006 remain=23 (using pending_write_fifo)
+# 11765000: DMA stall - FIFO full: remain=23 fifo_count=4
+# 11775000: MEM_MODEL write addr=2850 data=0x5a5a0006
+# 11775000: DMA BUSY state remain=22 fifo_count=3 read_index=196 write_index=2851 fifo_head=3 fifo_tail=3
+# 11775000: DMA issue read addr=196 pending_fifo_tail=3 remain=22
+# 11785000: MEM_MODEL read_en addr=196 -> sampled=0x5a5a0007
+# 11785000: DMA BUSY state remain=22 fifo_count=4 read_index=197 write_index=2852 fifo_head=3 fifo_tail=0
+# 11785000: DMA stall - FIFO full: remain=22 fifo_count=4
+# 11795000: DMA BUSY state remain=22 fifo_count=4 read_index=197 write_index=2852 fifo_head=3 fifo_tail=0
+# 11795000: DMA capture data=0x5a5a0007 for pending_write_addr=2851 (mem_read_valid)
+# 11795000: DMA write addr=2851 data=0x5a5a0007 remain=22 (using pending_write_fifo)
+# 11795000: DMA stall - FIFO full: remain=22 fifo_count=4
+# 11805000: MEM_MODEL write addr=2851 data=0x5a5a0007
+# 11805000: DMA BUSY state remain=21 fifo_count=3 read_index=197 write_index=2852 fifo_head=0 fifo_tail=0
+# 11805000: DMA issue read addr=197 pending_fifo_tail=0 remain=21
+# 11815000: MEM_MODEL read_en addr=197 -> sampled=0x5a5a0008
+# 11815000: DMA BUSY state remain=21 fifo_count=4 read_index=198 write_index=2853 fifo_head=0 fifo_tail=1
+# 11815000: DMA stall - FIFO full: remain=21 fifo_count=4
+# 11825000: DMA BUSY state remain=21 fifo_count=4 read_index=198 write_index=2853 fifo_head=0 fifo_tail=1
+# 11825000: DMA capture data=0x5a5a0008 for pending_write_addr=2852 (mem_read_valid)
+# 11825000: DMA write addr=2852 data=0x5a5a0008 remain=21 (using pending_write_fifo)
+# 11825000: DMA stall - FIFO full: remain=21 fifo_count=4
+# 11835000: MEM_MODEL write addr=2852 data=0x5a5a0008
+# 11835000: DMA BUSY state remain=20 fifo_count=3 read_index=198 write_index=2853 fifo_head=1 fifo_tail=1
+# 11835000: DMA issue read addr=198 pending_fifo_tail=1 remain=20
+# 11845000: MEM_MODEL read_en addr=198 -> sampled=0x5a5a0009
+# 11845000: DMA BUSY state remain=20 fifo_count=4 read_index=199 write_index=2854 fifo_head=1 fifo_tail=2
+# 11845000: DMA stall - FIFO full: remain=20 fifo_count=4
+# 11855000: DMA BUSY state remain=20 fifo_count=4 read_index=199 write_index=2854 fifo_head=1 fifo_tail=2
+# 11855000: DMA capture data=0x5a5a0009 for pending_write_addr=2853 (mem_read_valid)
+# 11855000: DMA write addr=2853 data=0x5a5a0009 remain=20 (using pending_write_fifo)
+# 11855000: DMA stall - FIFO full: remain=20 fifo_count=4
+# 11865000: MEM_MODEL write addr=2853 data=0x5a5a0009
+# 11865000: DMA BUSY state remain=19 fifo_count=3 read_index=199 write_index=2854 fifo_head=2 fifo_tail=2
+# 11865000: DMA issue read addr=199 pending_fifo_tail=2 remain=19
+# 11875000: MEM_MODEL read_en addr=199 -> sampled=0x5a5a000a
+# 11875000: DMA BUSY state remain=19 fifo_count=4 read_index=200 write_index=2855 fifo_head=2 fifo_tail=3
+# 11875000: DMA stall - FIFO full: remain=19 fifo_count=4
+# 11885000: DMA BUSY state remain=19 fifo_count=4 read_index=200 write_index=2855 fifo_head=2 fifo_tail=3
+# 11885000: DMA capture data=0x5a5a000a for pending_write_addr=2854 (mem_read_valid)
+# 11885000: DMA write addr=2854 data=0x5a5a000a remain=19 (using pending_write_fifo)
+# 11885000: DMA stall - FIFO full: remain=19 fifo_count=4
+# 11895000: MEM_MODEL write addr=2854 data=0x5a5a000a
+# 11895000: DMA BUSY state remain=18 fifo_count=3 read_index=200 write_index=2855 fifo_head=3 fifo_tail=3
+# 11895000: DMA issue read addr=200 pending_fifo_tail=3 remain=18
+# 11905000: MEM_MODEL read_en addr=200 -> sampled=0x5a5a000b
+# 11905000: DMA BUSY state remain=18 fifo_count=4 read_index=201 write_index=2856 fifo_head=3 fifo_tail=0
+# 11905000: DMA stall - FIFO full: remain=18 fifo_count=4
+# 11915000: DMA BUSY state remain=18 fifo_count=4 read_index=201 write_index=2856 fifo_head=3 fifo_tail=0
+# 11915000: DMA capture data=0x5a5a000b for pending_write_addr=2855 (mem_read_valid)
+# 11915000: DMA write addr=2855 data=0x5a5a000b remain=18 (using pending_write_fifo)
+# 11915000: DMA stall - FIFO full: remain=18 fifo_count=4
+# 11925000: MEM_MODEL write addr=2855 data=0x5a5a000b
+# 11925000: DMA BUSY state remain=17 fifo_count=3 read_index=201 write_index=2856 fifo_head=0 fifo_tail=0
+# 11925000: DMA issue read addr=201 pending_fifo_tail=0 remain=17
+# 11935000: MEM_MODEL read_en addr=201 -> sampled=0x5a5a000c
+# 11935000: DMA BUSY state remain=17 fifo_count=4 read_index=202 write_index=2857 fifo_head=0 fifo_tail=1
+# 11935000: DMA stall - FIFO full: remain=17 fifo_count=4
+# 11945000: DMA BUSY state remain=17 fifo_count=4 read_index=202 write_index=2857 fifo_head=0 fifo_tail=1
+# 11945000: DMA capture data=0x5a5a000c for pending_write_addr=2856 (mem_read_valid)
+# 11945000: DMA write addr=2856 data=0x5a5a000c remain=17 (using pending_write_fifo)
+# 11945000: DMA stall - FIFO full: remain=17 fifo_count=4
+# 11955000: MEM_MODEL write addr=2856 data=0x5a5a000c
+# 11955000: DMA BUSY state remain=16 fifo_count=3 read_index=202 write_index=2857 fifo_head=1 fifo_tail=1
+# 11955000: DMA issue read addr=202 pending_fifo_tail=1 remain=16
+# 11965000: MEM_MODEL read_en addr=202 -> sampled=0x5a5a000d
+# 11965000: DMA BUSY state remain=16 fifo_count=4 read_index=203 write_index=2858 fifo_head=1 fifo_tail=2
+# 11965000: DMA stall - FIFO full: remain=16 fifo_count=4
+# 11975000: DMA BUSY state remain=16 fifo_count=4 read_index=203 write_index=2858 fifo_head=1 fifo_tail=2
+# 11975000: DMA capture data=0x5a5a000d for pending_write_addr=2857 (mem_read_valid)
+# 11975000: DMA write addr=2857 data=0x5a5a000d remain=16 (using pending_write_fifo)
+# 11975000: DMA stall - FIFO full: remain=16 fifo_count=4
+# 11985000: MEM_MODEL write addr=2857 data=0x5a5a000d
+# 11985000: DMA BUSY state remain=15 fifo_count=3 read_index=203 write_index=2858 fifo_head=2 fifo_tail=2
+# 11985000: DMA issue read addr=203 pending_fifo_tail=2 remain=15
+# 11995000: MEM_MODEL read_en addr=203 -> sampled=0x5a5a000e
+# 11995000: DMA BUSY state remain=15 fifo_count=4 read_index=204 write_index=2859 fifo_head=2 fifo_tail=3
+# 11995000: DMA stall - FIFO full: remain=15 fifo_count=4
+# 12005000: DMA BUSY state remain=15 fifo_count=4 read_index=204 write_index=2859 fifo_head=2 fifo_tail=3
+# 12005000: DMA capture data=0x5a5a000e for pending_write_addr=2858 (mem_read_valid)
+# 12005000: DMA write addr=2858 data=0x5a5a000e remain=15 (using pending_write_fifo)
+# 12005000: DMA stall - FIFO full: remain=15 fifo_count=4
+# 12015000: MEM_MODEL write addr=2858 data=0x5a5a000e
+# 12015000: DMA BUSY state remain=14 fifo_count=3 read_index=204 write_index=2859 fifo_head=3 fifo_tail=3
+# 12015000: DMA issue read addr=204 pending_fifo_tail=3 remain=14
+# 12025000: MEM_MODEL read_en addr=204 -> sampled=0x5a5a000f
+# 12025000: DMA BUSY state remain=14 fifo_count=4 read_index=205 write_index=2860 fifo_head=3 fifo_tail=0
+# 12025000: DMA stall - FIFO full: remain=14 fifo_count=4
+# 12035000: DMA BUSY state remain=14 fifo_count=4 read_index=205 write_index=2860 fifo_head=3 fifo_tail=0
+# 12035000: DMA capture data=0x5a5a000f for pending_write_addr=2859 (mem_read_valid)
+# 12035000: DMA write addr=2859 data=0x5a5a000f remain=14 (using pending_write_fifo)
+# 12035000: DMA stall - FIFO full: remain=14 fifo_count=4
+# 12045000: MEM_MODEL write addr=2859 data=0x5a5a000f
+# 12045000: DMA BUSY state remain=13 fifo_count=3 read_index=205 write_index=2860 fifo_head=0 fifo_tail=0
+# 12045000: DMA issue read addr=205 pending_fifo_tail=0 remain=13
+# 12055000: MEM_MODEL read_en addr=205 -> sampled=0x5a5a0010
+# 12055000: DMA BUSY state remain=13 fifo_count=4 read_index=206 write_index=2861 fifo_head=0 fifo_tail=1
+# 12055000: DMA stall - FIFO full: remain=13 fifo_count=4
+# 12065000: DMA BUSY state remain=13 fifo_count=4 read_index=206 write_index=2861 fifo_head=0 fifo_tail=1
+# 12065000: DMA capture data=0x5a5a0010 for pending_write_addr=2860 (mem_read_valid)
+# 12065000: DMA write addr=2860 data=0x5a5a0010 remain=13 (using pending_write_fifo)
+# 12065000: DMA stall - FIFO full: remain=13 fifo_count=4
+# 12075000: MEM_MODEL write addr=2860 data=0x5a5a0010
+# 12075000: DMA BUSY state remain=12 fifo_count=3 read_index=206 write_index=2861 fifo_head=1 fifo_tail=1
+# 12075000: DMA issue read addr=206 pending_fifo_tail=1 remain=12
+# 12085000: MEM_MODEL read_en addr=206 -> sampled=0x5a5a0011
+# 12085000: DMA BUSY state remain=12 fifo_count=4 read_index=207 write_index=2862 fifo_head=1 fifo_tail=2
+# 12085000: DMA stall - FIFO full: remain=12 fifo_count=4
+# 12095000: DMA BUSY state remain=12 fifo_count=4 read_index=207 write_index=2862 fifo_head=1 fifo_tail=2
+# 12095000: DMA capture data=0x5a5a0011 for pending_write_addr=2861 (mem_read_valid)
+# 12095000: DMA write addr=2861 data=0x5a5a0011 remain=12 (using pending_write_fifo)
+# 12095000: DMA stall - FIFO full: remain=12 fifo_count=4
+# 12105000: MEM_MODEL write addr=2861 data=0x5a5a0011
+# 12105000: DMA BUSY state remain=11 fifo_count=3 read_index=207 write_index=2862 fifo_head=2 fifo_tail=2
+# 12105000: DMA issue read addr=207 pending_fifo_tail=2 remain=11
+# 12115000: MEM_MODEL read_en addr=207 -> sampled=0x5a5a0012
+# 12115000: DMA BUSY state remain=11 fifo_count=4 read_index=208 write_index=2863 fifo_head=2 fifo_tail=3
+# 12115000: DMA stall - FIFO full: remain=11 fifo_count=4
+# 12125000: DMA BUSY state remain=11 fifo_count=4 read_index=208 write_index=2863 fifo_head=2 fifo_tail=3
+# 12125000: DMA capture data=0x5a5a0012 for pending_write_addr=2862 (mem_read_valid)
+# 12125000: DMA write addr=2862 data=0x5a5a0012 remain=11 (using pending_write_fifo)
+# 12125000: DMA stall - FIFO full: remain=11 fifo_count=4
+# 12135000: MEM_MODEL write addr=2862 data=0x5a5a0012
+# 12135000: DMA BUSY state remain=10 fifo_count=3 read_index=208 write_index=2863 fifo_head=3 fifo_tail=3
+# 12135000: DMA issue read addr=208 pending_fifo_tail=3 remain=10
+# 12145000: MEM_MODEL read_en addr=208 -> sampled=0x5a5a0013
+# 12145000: DMA BUSY state remain=10 fifo_count=4 read_index=209 write_index=2864 fifo_head=3 fifo_tail=0
+# 12145000: DMA stall - FIFO full: remain=10 fifo_count=4
+# 12155000: DMA BUSY state remain=10 fifo_count=4 read_index=209 write_index=2864 fifo_head=3 fifo_tail=0
+# 12155000: DMA capture data=0x5a5a0013 for pending_write_addr=2863 (mem_read_valid)
+# 12155000: DMA write addr=2863 data=0x5a5a0013 remain=10 (using pending_write_fifo)
+# 12155000: DMA stall - FIFO full: remain=10 fifo_count=4
+# 12165000: MEM_MODEL write addr=2863 data=0x5a5a0013
+# 12165000: DMA BUSY state remain=9 fifo_count=3 read_index=209 write_index=2864 fifo_head=0 fifo_tail=0
+# 12165000: DMA issue read addr=209 pending_fifo_tail=0 remain=9
+# 12175000: MEM_MODEL read_en addr=209 -> sampled=0x5a5a0014
+# 12175000: DMA BUSY state remain=9 fifo_count=4 read_index=210 write_index=2865 fifo_head=0 fifo_tail=1
+# 12175000: DMA stall - FIFO full: remain=9 fifo_count=4
+# 12185000: DMA BUSY state remain=9 fifo_count=4 read_index=210 write_index=2865 fifo_head=0 fifo_tail=1
+# 12185000: DMA capture data=0x5a5a0014 for pending_write_addr=2864 (mem_read_valid)
+# 12185000: DMA write addr=2864 data=0x5a5a0014 remain=9 (using pending_write_fifo)
+# 12185000: DMA stall - FIFO full: remain=9 fifo_count=4
+# 12195000: MEM_MODEL write addr=2864 data=0x5a5a0014
+# 12195000: DMA BUSY state remain=8 fifo_count=3 read_index=210 write_index=2865 fifo_head=1 fifo_tail=1
+# 12195000: DMA issue read addr=210 pending_fifo_tail=1 remain=8
+# 12205000: MEM_MODEL read_en addr=210 -> sampled=0x5a5a0015
+# 12205000: DMA BUSY state remain=8 fifo_count=4 read_index=211 write_index=2866 fifo_head=1 fifo_tail=2
+# 12205000: DMA stall - FIFO full: remain=8 fifo_count=4
+# 12215000: DMA BUSY state remain=8 fifo_count=4 read_index=211 write_index=2866 fifo_head=1 fifo_tail=2
+# 12215000: DMA capture data=0x5a5a0015 for pending_write_addr=2865 (mem_read_valid)
+# 12215000: DMA write addr=2865 data=0x5a5a0015 remain=8 (using pending_write_fifo)
+# 12215000: DMA stall - FIFO full: remain=8 fifo_count=4
+# 12225000: MEM_MODEL write addr=2865 data=0x5a5a0015
+# 12225000: DMA BUSY state remain=7 fifo_count=3 read_index=211 write_index=2866 fifo_head=2 fifo_tail=2
+# 12225000: DMA issue read addr=211 pending_fifo_tail=2 remain=7
+# 12235000: MEM_MODEL read_en addr=211 -> sampled=0x5a5a0016
+# 12235000: DMA BUSY state remain=7 fifo_count=4 read_index=212 write_index=2867 fifo_head=2 fifo_tail=3
+# 12235000: DMA stall - FIFO full: remain=7 fifo_count=4
+# 12245000: DMA BUSY state remain=7 fifo_count=4 read_index=212 write_index=2867 fifo_head=2 fifo_tail=3
+# 12245000: DMA capture data=0x5a5a0016 for pending_write_addr=2866 (mem_read_valid)
+# 12245000: DMA write addr=2866 data=0x5a5a0016 remain=7 (using pending_write_fifo)
+# 12245000: DMA stall - FIFO full: remain=7 fifo_count=4
+# 12255000: MEM_MODEL write addr=2866 data=0x5a5a0016
+# 12255000: DMA BUSY state remain=6 fifo_count=3 read_index=212 write_index=2867 fifo_head=3 fifo_tail=3
+# 12255000: DMA issue read addr=212 pending_fifo_tail=3 remain=6
+# 12265000: MEM_MODEL read_en addr=212 -> sampled=0x5a5a0017
+# 12265000: DMA BUSY state remain=6 fifo_count=4 read_index=213 write_index=2868 fifo_head=3 fifo_tail=0
+# 12265000: DMA stall - FIFO full: remain=6 fifo_count=4
+# 12275000: DMA BUSY state remain=6 fifo_count=4 read_index=213 write_index=2868 fifo_head=3 fifo_tail=0
+# 12275000: DMA capture data=0x5a5a0017 for pending_write_addr=2867 (mem_read_valid)
+# 12275000: DMA write addr=2867 data=0x5a5a0017 remain=6 (using pending_write_fifo)
+# 12275000: DMA stall - FIFO full: remain=6 fifo_count=4
+# 12285000: MEM_MODEL write addr=2867 data=0x5a5a0017
+# 12285000: DMA BUSY state remain=5 fifo_count=3 read_index=213 write_index=2868 fifo_head=0 fifo_tail=0
+# 12285000: DMA issue read addr=213 pending_fifo_tail=0 remain=5
+# 12295000: MEM_MODEL read_en addr=213 -> sampled=0x5a5a0018
+# 12295000: DMA BUSY state remain=5 fifo_count=4 read_index=214 write_index=2869 fifo_head=0 fifo_tail=1
+# 12295000: DMA stall - FIFO full: remain=5 fifo_count=4
+# 12305000: DMA BUSY state remain=5 fifo_count=4 read_index=214 write_index=2869 fifo_head=0 fifo_tail=1
+# 12305000: DMA capture data=0x5a5a0018 for pending_write_addr=2868 (mem_read_valid)
+# 12305000: DMA write addr=2868 data=0x5a5a0018 remain=5 (using pending_write_fifo)
+# 12305000: DMA stall - FIFO full: remain=5 fifo_count=4
+# 12315000: MEM_MODEL write addr=2868 data=0x5a5a0018
+# 12315000: DMA BUSY state remain=4 fifo_count=3 read_index=214 write_index=2869 fifo_head=1 fifo_tail=1
+# 12315000: DMA issue read addr=214 pending_fifo_tail=1 remain=4
+# 12325000: MEM_MODEL read_en addr=214 -> sampled=0x5a5a0019
+# 12325000: DMA BUSY state remain=4 fifo_count=4 read_index=215 write_index=2870 fifo_head=1 fifo_tail=2
+# 12325000: DMA stall - FIFO full: remain=4 fifo_count=4
+# 12335000: DMA BUSY state remain=4 fifo_count=4 read_index=215 write_index=2870 fifo_head=1 fifo_tail=2
+# 12335000: DMA capture data=0x5a5a0019 for pending_write_addr=2869 (mem_read_valid)
+# 12335000: DMA write addr=2869 data=0x5a5a0019 remain=4 (using pending_write_fifo)
+# 12335000: DMA stall - FIFO full: remain=4 fifo_count=4
+# 12345000: MEM_MODEL write addr=2869 data=0x5a5a0019
+# 12345000: DMA BUSY state remain=3 fifo_count=3 read_index=215 write_index=2870 fifo_head=2 fifo_tail=2
+# 12345000: DMA issue read addr=215 pending_fifo_tail=2 remain=3
+# 12355000: MEM_MODEL read_en addr=215 -> sampled=0x5a5a001a
+# 12355000: DMA BUSY state remain=3 fifo_count=4 read_index=216 write_index=2871 fifo_head=2 fifo_tail=3
+# 12355000: DMA stall - FIFO full: remain=3 fifo_count=4
+# 12365000: DMA BUSY state remain=3 fifo_count=4 read_index=216 write_index=2871 fifo_head=2 fifo_tail=3
+# 12365000: DMA capture data=0x5a5a001a for pending_write_addr=2870 (mem_read_valid)
+# 12365000: DMA write addr=2870 data=0x5a5a001a remain=3 (using pending_write_fifo)
+# 12365000: DMA stall - FIFO full: remain=3 fifo_count=4
+# 12375000: MEM_MODEL write addr=2870 data=0x5a5a001a
+# 12375000: DMA BUSY state remain=2 fifo_count=3 read_index=216 write_index=2871 fifo_head=3 fifo_tail=3
+# 12375000: DMA issue read addr=216 pending_fifo_tail=3 remain=2
+# 12385000: MEM_MODEL read_en addr=216 -> sampled=0x5a5a001b
+# 12385000: DMA BUSY state remain=2 fifo_count=4 read_index=217 write_index=2872 fifo_head=3 fifo_tail=0
+# 12385000: DMA stall - FIFO full: remain=2 fifo_count=4
+# 12395000: DMA BUSY state remain=2 fifo_count=4 read_index=217 write_index=2872 fifo_head=3 fifo_tail=0
+# 12395000: DMA capture data=0x5a5a001b for pending_write_addr=2871 (mem_read_valid)
+# 12395000: DMA write addr=2871 data=0x5a5a001b remain=2 (using pending_write_fifo)
+# 12395000: DMA stall - FIFO full: remain=2 fifo_count=4
+# 12405000: MEM_MODEL write addr=2871 data=0x5a5a001b
+# 12405000: DMA BUSY state remain=1 fifo_count=3 read_index=217 write_index=2872 fifo_head=0 fifo_tail=0
+# 12405000: DMA issue read addr=217 pending_fifo_tail=0 remain=1
+# 12415000: MEM_MODEL read_en addr=217 -> sampled=0x5a5a001c
+# 12415000: DMA BUSY state remain=1 fifo_count=4 read_index=218 write_index=2873 fifo_head=0 fifo_tail=1
+# 12415000: DMA stall - FIFO full: remain=1 fifo_count=4
+# 12425000: DMA BUSY state remain=1 fifo_count=4 read_index=218 write_index=2873 fifo_head=0 fifo_tail=1
+# 12425000: DMA capture data=0x5a5a001c for pending_write_addr=2872 (mem_read_valid)
+# 12425000: DMA write addr=2872 data=0x5a5a001c remain=1 (using pending_write_fifo)
+# 12425000: DMA stall - FIFO full: remain=1 fifo_count=4
+# 12435000: MEM_MODEL write addr=2872 data=0x5a5a001c
+# CASE PASS: src=0x000002f4 dst=0x00002c70 words=29
+# REPRODUCER: single-case done, passed=6 failed=0
+# TEST SUMMARY: passed=6 failed=0
+# SIM DONE
+# ** Note: $finish    : C:/Users/waric/Documents/gpu/sim/tb_top.sv(299)
+#    Time: 12465 ns  Iteration: 1  Instance: /tb_top
+# End time: 00:25:09 on Nov 22,2025, Elapsed time: 0:00:01
+# Errors: 0, Warnings: 0

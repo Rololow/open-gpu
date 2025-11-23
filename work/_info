@@ -1,0 +1,164 @@
+m255
+K4
+z2
+!s11f vlog 2020.1 2020.02, Feb 28 2020
+13
+!s112 1.1
+!i10d 8192
+!i10e 25
+!i10f 100
+cModel Technology
+Z0 dC:/Users/waric/Documents/gpu
+Xconfig_pkg
+Z1 DXx6 sv_std 3 std 0 22 VYECXdT12H8WgbUP_5Y6:3
+Z2 !s110 1763908677
+!i10b 1
+!s100 @gTP581[U<e2ehBUK@U^@1
+Z3 !s11b Dg1SIo80bB@j0V0VzS_@n1
+IC7z:hRhL[lGk2VP?CNPKQ1
+VC7z:hRhL[lGk2VP?CNPKQ1
+S1
+R0
+w1763766429
+8C:\Users\waric\Documents\gpu\rtl\config.sv
+FC:\Users\waric\Documents\gpu\rtl\config.sv
+!i122 0
+L0 1 0
+Z4 OV;L;2020.1;71
+r1
+!s85 0
+31
+Z5 !s108 1763908677.000000
+!s107 C:\Users\waric\Documents\gpu\sim\tb_top.sv|C:\Users\waric\Documents\gpu\rtl\top.sv|C:\Users\waric\Documents\gpu\rtl\mmu.sv|C:\Users\waric\Documents\gpu\rtl\mem_model.sv|C:\Users\waric\Documents\gpu\rtl\dma.sv|C:\Users\waric\Documents\gpu\rtl\config.sv|
+Z6 !s90 -incr|-work|work|-sv|C:\Users\waric\Documents\gpu\rtl\config.sv|C:\Users\waric\Documents\gpu\rtl\dma.sv|C:\Users\waric\Documents\gpu\rtl\mem_model.sv|C:\Users\waric\Documents\gpu\rtl\mmu.sv|C:\Users\waric\Documents\gpu\rtl\top.sv|C:\Users\waric\Documents\gpu\sim\tb_top.sv|
+!i113 1
+Z7 o-work work -sv
+Z8 tCvgOpt 0
+vdma
+R1
+Z9 DXx4 work 10 config_pkg 0 22 C7z:hRhL[lGk2VP?CNPKQ1
+R2
+!i10b 1
+!s100 <^AzWhfRjN;ggQ0BIUjBE2
+R3
+IeUl]SCnDGTIXPZA_ki4n92
+Z10 VDg1SIo80bB@j0V0VzS_@n1
+S1
+R0
+w1763905321
+8C:\Users\waric\Documents\gpu\rtl\dma.sv
+FC:\Users\waric\Documents\gpu\rtl\dma.sv
+!i122 0
+L0 1 333
+R4
+r1
+!s85 0
+31
+R5
+Z11 !s107 C:\Users\waric\Documents\gpu\sim\tb_top.sv|C:\Users\waric\Documents\gpu\rtl\top.sv|C:\Users\waric\Documents\gpu\rtl\mmu.sv|C:\Users\waric\Documents\gpu\rtl\mem_model.sv|C:\Users\waric\Documents\gpu\rtl\dma.sv|C:\Users\waric\Documents\gpu\rtl\config.sv|
+R6
+!i113 1
+R7
+R8
+vmem_model
+R1
+R9
+R2
+!i10b 1
+!s100 41EY?hWz67=^m5J>_MT?41
+R3
+IfCD3@jNET`oVB88;0E0Wz2
+R10
+S1
+R0
+w1763903164
+8C:\Users\waric\Documents\gpu\rtl\mem_model.sv
+FC:\Users\waric\Documents\gpu\rtl\mem_model.sv
+!i122 0
+L0 2 61
+R4
+r1
+!s85 0
+31
+R5
+R11
+R6
+!i113 1
+R7
+R8
+vmmu
+R1
+R2
+!i10b 1
+!s100 5R?eRai5Wd5_6WbZG`KDR1
+R3
+I^Se?V?;id8C0:kYTB^Cz?1
+R10
+S1
+R0
+w1763744430
+8C:\Users\waric\Documents\gpu\rtl\mmu.sv
+FC:\Users\waric\Documents\gpu\rtl\mmu.sv
+!i122 0
+L0 1 12
+R4
+r1
+!s85 0
+31
+R5
+R11
+R6
+!i113 1
+R7
+R8
+vtb_top
+R1
+R2
+!i10b 1
+!s100 7^42?a6]jzBPWF9^Uji[>2
+R3
+IMPWdjPFz^LUn`KZBofHEY0
+R10
+S1
+R0
+Z12 w1763908358
+8C:\Users\waric\Documents\gpu\sim\tb_top.sv
+FC:\Users\waric\Documents\gpu\sim\tb_top.sv
+!i122 0
+L0 2 400
+R4
+r1
+!s85 0
+31
+R5
+R11
+R6
+!i113 1
+R7
+R8
+vtop
+R1
+R9
+R2
+!i10b 1
+!s100 ?lUgfQgoOXC5MHPQ_V5J42
+R3
+ISNU_R7UURO7Jaz3OPJN8Y2
+R10
+S1
+R0
+R12
+8C:\Users\waric\Documents\gpu\rtl\top.sv
+FC:\Users\waric\Documents\gpu\rtl\top.sv
+!i122 0
+L0 4 191
+R4
+r1
+!s85 0
+31
+R5
+R11
+R6
+!i113 1
+R7
+R8
